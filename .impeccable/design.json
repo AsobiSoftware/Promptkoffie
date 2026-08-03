@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-03T17:00:00.000Z",
+  "title": "Design System: Promptkoffie",
+  "extensions": {
+    "colorMeta": {
+      "amber-ember": { "role": "primary", "displayName": "Geroosterde Kaneel Amber", "canonical": "#B45309", "tonalRamp": ["#78350F", "#92400E", "#B45309", "#D97706", "#F59E0B", "#FBBF24", "#FCD34D", "#FEF3C7"] },
+      "amber-roast": { "role": "primary", "displayName": "Amber Roast", "canonical": "#78350F" },
+      "amber-hover": { "role": "primary", "displayName": "Amber Hover", "canonical": "#92400E" },
+      "trust-emerald": { "role": "secondary", "displayName": "Privacy Emerald", "canonical": "#059669", "tonalRamp": ["#064E3B", "#065F46", "#047857", "#059669", "#10B981", "#34D399", "#6EE7B7", "#D1FAE5"] },
+      "warm-blush": { "role": "tertiary", "displayName": "Warme Blos", "canonical": "#F43F5E", "tonalRamp": ["#4C0519", "#881337", "#9F1239", "#E11D48", "#F43F5E", "#FB7185", "#FECDD3", "#FFF1F2"] },
+      "ink": { "role": "neutral", "displayName": "Inkt", "canonical": "#1C1917", "tonalRamp": ["#0C0A09", "#1C1917", "#292524", "#44403C", "#57534E", "#78716C", "#A8A29E", "#E7E5E4"] },
+      "ink-hover": { "role": "neutral", "displayName": "Inkt Hover", "canonical": "#292524" },
+      "cream": { "role": "neutral", "displayName": "Crème", "canonical": "#FAF8F5" },
+      "border": { "role": "neutral", "displayName": "Rand", "canonical": "#E7E1D8" },
+      "text-secondary": { "role": "neutral", "displayName": "Tekst Secundair", "canonical": "#57534E" },
+      "text-tertiary": { "role": "neutral", "displayName": "Tekst Tertiair", "canonical": "#78716C" },
+      "text-quaternary": { "role": "neutral", "displayName": "Tekst Quaternair", "canonical": "#A8A29E" },
+      "badge-bg": { "role": "neutral", "displayName": "Badge Achtergrond", "canonical": "#FEF3C7" },
+      "badge-border": { "role": "neutral", "displayName": "Badge Rand", "canonical": "#FDE68A" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero-titel (H1), enige plek met de grootste schaal." },
+      "headline": { "displayName": "Headline", "purpose": "Sectiekoppen (H2)." },
+      "title": { "displayName": "Title", "purpose": "Kaarttitels (H3): stapkaarten, FAQ-vragen." },
+      "body": { "displayName": "Body", "purpose": "Standaard lichaamstekst en leads." },
+      "label": { "displayName": "Label", "purpose": "Formulierlabels, badges, footer-kopjes — altijd uppercase." }
+    },
+    "shadows": [
+      { "name": "ambient-card", "value": "0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1)", "purpose": "Kaarten en formulierboxen (shadow-lg/xl/2xl)." },
+      { "name": "brand-glow", "value": "0 4px 6px -1px rgba(180,83,9,0.2)", "purpose": "Logo-badge en primaire CTA's — schaduw in merkkleur, niet zwart." },
+      { "name": "micro", "value": "0 1px 2px 0 rgba(0,0,0,0.05)", "purpose": "Kleine badges en de header-CTA." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "all 0.3s ease", "purpose": "Standaard hover/focus-transitie op knoppen, kaarten, links." },
+      { "name": "hover-lift", "value": "transform 0.2s ease", "purpose": "Subtiele scale/translate op logo en CTA-pijlen bij hover." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Amber CTA-knop met witte tekst en trailing pijl die bij hover opschuift.",
+      "html": "<button class=\"ds-btn-primary\"><span>Schrijf je in</span><svg class=\"ds-btn-arrow\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: #B45309; color: #ffffff; padding: 0.875rem 1.5rem; border-radius: 0.75rem; font-weight: 700; font-size: 0.875rem; border: none; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(180,83,9,0.2); transition: background 0.2s ease; } .ds-btn-primary:hover { background: #92400E; } .ds-btn-primary:hover .ds-btn-arrow { transform: translateX(2px); } .ds-btn-arrow { transition: transform 0.2s ease; }"
+    },
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Inkt-gekleurde secundaire knopvariant, gebruikt in header en Hero-microform.",
+      "html": "<button class=\"ds-btn-dark\">Schrijf je in</button>",
+      "css": ".ds-btn-dark { background: #1C1917; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.75rem; font-weight: 500; font-size: 0.875rem; border: none; cursor: pointer; transition: background 0.2s ease; } .ds-btn-dark:hover { background: #292524; }"
+    },
+    {
+      "name": "Badge Pill",
+      "kind": "chip",
+      "refersTo": "badge-pill",
+      "description": "Kleine pil-badge in amber, gebruikt boven sectiekoppen en als statuslabel.",
+      "html": "<span class=\"ds-badge\">Hoe het werkt</span>",
+      "css": ".ds-badge { display: inline-block; background: #FEF3C7; border: 1px solid #FDE68A; color: #92400E; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.75rem; border-radius: 9999px; }"
+    },
+    {
+      "name": "Card Surface",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Standaard kaartoppervlak: witte achtergrond, rand, zachte schaduw bij hover.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Titel</h3><p class=\"ds-card-body\">Beschrijving.</p></div>",
+      "css": ".ds-card { background: #ffffff; border: 1px solid #E7E1D8; border-radius: 1rem; padding: 2rem; transition: box-shadow 0.3s ease, border-color 0.3s ease; } .ds-card:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(180,83,9,0.4); } .ds-card-title { font-family: 'Instrument Serif', Georgia, serif; font-weight: 700; font-size: 1.25rem; color: #1C1917; margin-bottom: 0.5rem; } .ds-card-body { color: #57534E; font-size: 0.875rem; line-height: 1.6; }"
+    },
+    {
+      "name": "Light Input Group",
+      "kind": "input",
+      "refersTo": "input-light",
+      "description": "Consument-formulierstijl: geen individuele veldrand, hele groep in één witte pil-container.",
+      "html": "<form class=\"ds-input-group-light\"><input class=\"ds-input-light\" type=\"email\" placeholder=\"jouw.naam@email.nl\" /><button class=\"ds-btn-dark\">Schrijf je in</button></form>",
+      "css": ".ds-input-group-light { display: flex; gap: 0.625rem; padding: 0.375rem; background: #ffffff; border: 1px solid #E7E1D8; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(28,25,23,0.05); } .ds-input-light { flex: 1; padding: 0.75rem 1rem; border-radius: 0.75rem; border: none; background: transparent; font-size: 0.875rem; color: #1C1917; } .ds-input-light:focus { outline: none; box-shadow: 0 0 0 2px rgba(180,83,9,0.3); }"
+    },
+    {
+      "name": "Dark Input Field",
+      "kind": "input",
+      "refersTo": "input-dark",
+      "description": "Adverteerder-formulierstijl: elk veld heeft een eigen rand en donkere achtergrond.",
+      "html": "<div class=\"ds-field-dark\"><label class=\"ds-label-dark\">Naam contactpersoon *</label><input class=\"ds-input-dark\" type=\"text\" placeholder=\"Bijv. Jan Jansen\" /></div>",
+      "css": ".ds-label-dark { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #D6D3D1; margin-bottom: 0.375rem; } .ds-input-dark { width: 100%; padding: 0.75rem 1rem; border-radius: 0.75rem; background: #292524; border: 1px solid #44403C; color: #ffffff; font-size: 0.875rem; } .ds-input-dark:focus { outline: none; border-color: #F59E0B; }"
+    },
+    {
+      "name": "Icon Tile",
+      "kind": "custom",
+      "refersTo": "icon-tile",
+      "description": "Vierkante icoontegel met amber-gradiënt, gebruikt voor logo en stap-iconen.",
+      "html": "<div class=\"ds-icon-tile\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10 2v2\"/><path d=\"M14 2v2\"/><path d=\"M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1\"/><path d=\"M6 2v2\"/></svg></div>",
+      "css": ".ds-icon-tile { width: 2.5rem; height: 2.5rem; border-radius: 0.75rem; background: linear-gradient(to bottom right, #B45309, #78350F); color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(180,83,9,0.2); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "De Stille Kassa",
+    "overview": "Promptkoffie's visual system is an honest, transparent value-exchange made tangible: a wachtmoment tijdens een AI-antwoord wordt omgezet in een klein, eerlijk bedrag, zonder opzichtige game- of casino-mechaniek eromheen. De uitvoering is speels, verrassend en vrolijk in stem en copy (☕-emoji, warme micro-teksten, een levende demo-simulator), terwijl de onderliggende componenten — knoppen, kaarten, velden — bewust zacht en geruststellend blijven: grote radii, gedempte randen, ambient gloed in plaats van harde schaduwen. De kleurwereld is bijna volledig Tailwind's eigen amber- en stone-schalen, met twee bewust 'verwarmde' uitzonderingen (achtergrond en randen). Emerald is strikt gereserveerd voor privacy/vertrouwen-signalen; rose komt maar op twee plekken voor. Er is precies één visuele uitzondering: de InteractiveSimulator, die doelbewust de echte interfacekleuren van ChatGPT/Gemini/Claude nabootst.",
+    "keyCharacteristics": [
+      "Amber-op-crème als enige merkkleur, nooit paars/blauw SaaS-gradients.",
+      "Warme stone-neutralen voor tekst, nooit koele Tailwind grays.",
+      "Grote, zachte radii overal (rounded-xl minimum).",
+      "Ambient amber-gloed (blur-3xl) i.p.v. harde schaduwen als sfeermaker.",
+      "Instrument Serif voor koppen, Plus Jakarta Sans voor de rest — geen Inter, geen systeemfont."
+    ],
+    "rules": [
+      { "name": "De Warme-Neutraal Regel", "body": "Tekst- en oppervlakte-neutralen zijn altijd warm stone-getint, nooit koel grijs — koel grijs leest als generieke SaaS, warm stone leest als koffiezaak.", "section": "colors" },
+      { "name": "De Amber-Gradiënt Regel", "body": "De #B45309→#78350F-gradiënt is gereserveerd voor enkelvoudige merkankers (logo, hero-icoon), niet om over elk icoontje te plakken.", "section": "colors" },
+      { "name": "De Third-Party-Uitzondering", "body": "InteractiveSimulator.tsx's interne chat-UI-kleuren bootsen bewust ChatGPT/Gemini/Claude na en vallen buiten dit designsysteem.", "section": "colors" },
+      { "name": "De Eén-Serif-Regel", "body": "Instrument Serif verschijnt uitsluitend op koppen; lichaamstekst, labels en UI-copy blijven altijd Plus Jakarta Sans.", "section": "typography" },
+      { "name": "De Geen-Harde-Schaduw Regel", "body": "Geen enkele schaduw in dit systeem is scherp of zwart-op-wit hard; alles is diffuus en ofwel neutraal ofwel in merkkleur getint.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do gebruik de amber-gradiënt (#B45309→#78350F) uitsluitend voor enkelvoudige merkankers — logo, hero-icoon, niet gedecoreerd over elk icoontje.",
+      "Do gebruik warme stone-neutralen (#57534E/#78716C/#A8A29E) voor alle secundaire tekst — nooit text-gray-*.",
+      "Do houd radii groot en zacht (rounded-xl als absoluut minimum) — geen scherpe hoeken.",
+      "Do houd ambient gloed-vlekken in amber — nooit in een andere kleurtoon.",
+      "Do reserveer emerald uitsluitend voor privacy/vertrouwen-signalen."
+    ],
+    "donts": [
+      "Don't gebruik Tailwind's koele standaard-grijzen (text-gray-300/400/500) — AdvertiserCTA.tsx doet dit nu nog op meerdere plekken en is daarmee een afwijking van dit systeem.",
+      "Don't herkleur InteractiveSimulator's platform-mockups naar het amber-palet — hun ChatGPT/Gemini/Claude-kleuren zijn een bewuste uitzondering.",
+      "Don't voeg een paars/blauw generiek SaaS-gradiënt toe — de amber/koffie-identiteit is het hele punt.",
+      "Don't nest kaarten in kaarten zonder duidelijke reden (PrivacyTrust.tsx's kaart-in-kaart is een bestaande uitzondering).",
+      "Don't herhaal het icoontegel-boven-kop patroon zonder variatie in een nieuwe sectie."
+    ]
+  }
+}

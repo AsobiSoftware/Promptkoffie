@@ -1,0 +1,6 @@
+{
+  "name": "Promptkoffie",
+  "description": "Slimme browserextensie die je beloont met gratis koffie terwijl je wacht op AI antwoorden.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

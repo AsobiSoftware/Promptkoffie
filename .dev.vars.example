@@ -1,0 +1,12 @@
+# Kopieer naar .dev.vars (lokaal, NIET committen) voor `wrangler pages dev`.
+# In productie zet je deze zelfde namen als secrets/env vars in het
+# Cloudflare Pages dashboard (Settings -> Environment variables).
+
+GOOGLE_CLIENT_EMAIL=promptkoffie-sheets-writer@promptkoffie.iam.gserviceaccount.com
+# Plak de private_key uit de JSON-key hier, inclusief BEGIN/END-regels.
+# Newlines mogen als letterlijke "\n" blijven staan, de code herstelt dat.
+GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nJOUW_KEY_HIER\n-----END PRIVATE KEY-----\n"
+GOOGLE_SHEET_ID=jouw-sheet-id-uit-de-url
+
+RESEND_API_KEY=re_jouw_resend_key
+RESEND_FROM="PromptKoffie <onboarding@resend.dev>"
