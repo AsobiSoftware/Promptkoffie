@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Building2, ArrowRight, CheckCircle2, Loader2, Sparkles, Target, Zap, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 import { BusinessSignupPayload, SignupResponse } from '../types';
 
 export const AdvertiserCTA: React.FC = () => {
@@ -82,11 +82,6 @@ export const AdvertiserCTA: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Description Column */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold uppercase tracking-wider">
-              <Building2 className="w-4 h-4 text-amber-400" />
-              <span>Voor Bedrijven & Adverteerders</span>
-            </div>
-
             <h2 className="text-3xl sm:text-5xl font-bold font-serif leading-tight">
               Interesse om te adverteren?
             </h2>
@@ -95,38 +90,21 @@ export const AdvertiserCTA: React.FC = () => {
               Bereik actieve studenten, starters en jonge professionals precies wanneer hun oog gefocust is op het scherm: <strong>de 3 tot 8 seconden wachttijd op AI-generaties</strong>.
             </p>
 
-            {/* Value Props Grid */}
-            <div className="space-y-4 pt-2">
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
-                  <Target className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white">100% Gefocuste Aandacht</h3>
-                  <p className="text-xs text-stone-400 mt-0.5">Geen ad-fatigue op social media, maar een exclusieve micro-banner tijdens actief AI-gebruik.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
-                  <Zap className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white">Hoge Employer Branding & Conversion</h3>
-                  <p className="text-xs text-stone-400 mt-0.5">Perfect voor IT-recruitment, e-commerce, tools en fysieke consumentenmerken gericht op een jong, digitaal publiek.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
-                  <ShieldCheck className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white">Ethische en Blijvende Waardering</h3>
-                  <p className="text-xs text-stone-400 mt-0.5">Gebruikers waarderen jouw merk omdat jij hun dagelijkse kop koffie mede-financiert.</p>
-                </div>
-              </div>
-            </div>
+            {/* Value Props — typografische lijst */}
+            <ul className="space-y-3 pt-2 border-t border-stone-800">
+              <li className="flex gap-2.5 pt-3 text-sm text-stone-300 leading-relaxed">
+                <span className="text-amber-500 font-bold shrink-0">—</span>
+                <span><strong className="text-white font-bold">100% Gefocuste Aandacht.</strong> Geen ad-fatigue op social media, maar een exclusieve micro-banner tijdens actief AI-gebruik.</span>
+              </li>
+              <li className="flex gap-2.5 text-sm text-stone-300 leading-relaxed">
+                <span className="text-amber-500 font-bold shrink-0">—</span>
+                <span><strong className="text-white font-bold">Hoge Employer Branding & Conversion.</strong> Perfect voor IT-recruitment, e-commerce, tools en fysieke consumentenmerken gericht op een jong, digitaal publiek.</span>
+              </li>
+              <li className="flex gap-2.5 text-sm text-stone-300 leading-relaxed">
+                <span className="text-amber-500 font-bold shrink-0">—</span>
+                <span><strong className="text-white font-bold">Ethische en Blijvende Waardering.</strong> Gebruikers waarderen jouw merk omdat jij hun dagelijkse kop koffie mede-financiert.</span>
+              </li>
+            </ul>
           </div>
 
           {/* Right Form Box Column */}

@@ -24,7 +24,7 @@ export default function App() {
       {/* Main Page Layout */}
       <main>
         {/* 1. Punchy Hero Section (contains Simulator directly under title) */}
-        <Hero onScrollTo={scrollToSection} />
+        <Hero />
 
         {/* 2. How it works in 3 Steps */}
         <HowItWorks />

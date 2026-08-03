@@ -89,6 +89,16 @@ components:
     textColor: "#FFFFFF"
     rounded: "{rounded.sm}"
     padding: "0.75rem 1rem"
+  filter-chip-active:
+    backgroundColor: "{colors.ink}"
+    textColor: "#FFFFFF"
+    rounded: "{rounded.full}"
+    padding: "0.375rem 0.875rem"
+  filter-chip-inactive:
+    backgroundColor: "#FFFFFF"
+    textColor: "{colors.text-secondary}"
+    rounded: "{rounded.full}"
+    padding: "0.375rem 0.875rem"
 ---
 
 # Design System: Promptkoffie
@@ -131,14 +141,14 @@ Het palet is warm, geconcentreerd en bijna uitsluitend amber + stone; emerald en
 - **Tekst Secundair** (#57534E): lichaamstekst, beschrijvingen. Exact Tailwind stone-600.
 - **Tekst Tertiair** (#78716C): minder prominente tekst, footer-body. Exact Tailwind stone-500.
 - **Tekst Quaternair** (#A8A29E): meest gedempte tekst — copyright-regel, cijfers-achtergrond in stapkaarten. Exact Tailwind stone-400.
-- **Badge Achtergrond** (#FEF3C7) / **Badge Rand** (#FDE68A): de pil-badges ("Hoe het werkt", "100% Gratis"). Exact Tailwind amber-100/200.
+- **Badge Achtergrond** (#FEF3C7) / **Badge Rand** (#FDE68A): tekstselectie-highlight en incidentele accentdecoratie (underline onder "AI" in de hero-titel). Exact Tailwind amber-100/200. *Voert sinds de kicker-verwijdering (zie Do's en Don'ts) geen pil-badges meer aan.*
 
 ### Named Rules
 **De Warme-Neutraal Regel.** Tekst- en oppervlakte-neutralen zijn altijd warm stone-getint (#57534E/#78716C/#A8A29E/#E7E1D8), nooit koel grijs — koel grijs leest als generieke SaaS, warm stone leest als koffiezaak.
 
 **De Amber-Gradiënt Regel.** De #B45309→#78350F-gradiënt is gereserveerd voor enkelvoudige merkankers (logo, hero-icoon), niet om over elk icoontje te plakken.
 
-**De Third-Party-Uitzondering.** `InteractiveSimulator.tsx`'s interne chat-UI-kleuren (o.a. #10A37F, #1A73E8, #DA7756, #202123) bootsen bewust ChatGPT/Gemini/Claude na en vallen buiten dit designsysteem — nooit naar het amber-palet omzetten.
+**De Third-Party-Uitzondering.** `InteractiveSimulator.tsx`'s interne chat-UI-kleuren (o.a. #10A37F, #1A73E8, #DA7756, #202123) bootsen bewust ChatGPT/Gemini/Claude na en vallen buiten dit designsysteem — nooit naar het amber-palet omzetten. Deze uitzondering strekt zich ook uit tot de micro-typografie binnen die platform-mimicry-blokken (bijv. de 9-11px badge- en statustekst in de ChatGPT-sidebar, Gemini's "Google Workspace gekoppeld"-badge, Claude's "Anthropic"-tag): die maten volgen de échte interface-proporties van het nagebootste platform, niet dit systeem se type-ramp. Promptkoffie's éígen UI binnen dezelfde mockup (de koffiesaldo-badge, de browser-URL-balk, en de geïnjecteerde advertentiebalk) valt hier nadrukkelijk buiten en moet wél de normale type-ramp volgen.
 
 ## Typography
 
@@ -187,9 +197,8 @@ Grote, zachte radii zijn de constante: `rounded-xl` (12px) is het minimum voor e
 - **Dark variant:** inkt-achtergrond (#1C1917) i.p.v. amber, gebruikt in de header-CTA en de Hero-microform — hover naar #292524. Deze variant bestaat naast de amber-variant; welke van de twee gekozen wordt hangt af van de visuele lading van de sectie eromheen.
 - **Loading state:** icoon vervangen door een spinnende `Loader2`, geen tekstverandering.
 
-### Badges/Pills
-- **Style:** `rounded-full`, achtergrond #FEF3C7, rand #FDE68A, tekst #92400E of #B45309, `text-xs font-bold uppercase tracking-wider`, vaak met klein icoon vooraan.
-- **Privacy-variant:** dezelfde vorm maar in emerald (bg emerald-50/100, tekst emerald-800) — uitsluitend voor vertrouwenssignalen.
+### Filter Chips
+- **Style:** `rounded-full` knoppen, actief `bg-[#1C1917] text-white`, inactief wit met rand-neutraal — functionele controls die content sturen (FAQ-categorieën), geen decoratieve kicker-badges. Zie de Kicker-Regel in Do's en Don'ts: dit is het enige toegestane pil-vormige element boven content, omdat het interactief is in plaats van een label.
 
 ### Cards / Containers
 - **Corner Style:** `rounded-2xl` (secties/stappen) tot `rounded-3xl` (hero-niveau containers).
@@ -206,9 +215,19 @@ Twee bewust verschillende stijlen naast elkaar, per context:
 
 ### Navigation
 - Vaste header, transparant tot scroll (>20px), dan crème-achtergrond met blur en dunne onderrand. Logo = amber-gradiënt icoontegel + wordmerk in serif. Eén CTA-knop rechts, geen uitgebreid navigatiemenu.
+- **Footer:** donker (inkt-achtergrond), niet crème — vormt samen met `AdvertiserCTA` een licht/donker-ritme dat de pagina afsluit (AdvertiserCTA donker → FAQ licht → Footer donker).
+
+### Step Rail (HowItWorks)
+Vervangt losse iconkaarten: een dunne horizontale lijn draagt drie stap-markers (rond, `rounded-2xl`), tekst ernaast zonder kaartomlijning. Alleen de laatste/belangrijkste stap krijgt de grotere amber-gradiënt marker; de eerdere stappen blijven kleiner en neutraal — hiërarchie door grootte, niet door herhaling.
+
+### Checklist (PrivacyTrust)
+Vervangt een 3-koloms iconkaart-grid: verticale rijen gescheiden door dunne dividers (`divide-y`), klein icoonblokje + titel + beschrijving per rij, geen individuele kaartomlijning per punt. Voorkomt kaart-in-kaart binnen de buitenste containerkaart.
+
+### Receipt (UserSignupCTA)
+Signature-component voor de "Stille Kassa"-metafoor: een kaart met een gekartelde onderrand (`.receipt-edge` CSS-mask in `index.css`) en "bonregels" — `flex justify-between`-rijen met stippellijn tussen omschrijving en waarde, `font-mono tabular-nums` voor de waarden (gerechtvaardigd: dit zijn echte metingen/bedragen, geen kostuum), eindigend in een vetgedrukte totaalregel. Vervangt de oude combinatie van kicker-badge + platte bullet-lijst.
 
 ### Signature Component: InteractiveSimulator
-Een browsermockup met platform-tabs (ChatGPT/Gemini/Claude) die authentiek de kleuren en typografie van elk platform nabootst, met een geïnjecteerde Promptkoffie-advertentiebalk vlak boven de invoerbalk. Dit is het enige component waar het amber-palet bewust *niet* geldt voor de binnenkant — zie de Third-Party-Uitzondering hierboven.
+Een browsermockup met platform-tabs (ChatGPT/Gemini/Claude, plus een niet-klikbare "Perplexity — binnenkort"-chip) die authentiek de kleuren en typografie van elk platform nabootst. De geïnjecteerde Promptkoffie-advertentie staat in de lege ruimte **onder het eigen bericht van de gebruiker** (niet boven de invoerbalk — dit is bewust gewijzigd om aan te sluiten bij hoe een vergelijkbare, echte extensie dit in de praktijk plaatst), klein en met een hover-dismiss "×". Het formulier voor inschrijving is nu **in** dit component ingebouwd (onderste balk), niet ernaast — demo en actie zijn één artefact. Dit is het enige component waar het amber-palet bewust *niet* geldt voor de platform-mimicry-binnenkant — zie de Third-Party-Uitzondering hierboven.
 
 ## Do's and Don'ts
 
@@ -218,10 +237,11 @@ Een browsermockup met platform-tabs (ChatGPT/Gemini/Claude) die authentiek de kl
 - **Do** houd radii groot en zacht (`rounded-xl` als absoluut minimum) — geen scherpe hoeken.
 - **Do** houd ambient gloed-vlekken in amber — nooit in een andere kleurtoon.
 - **Do** reserveer emerald uitsluitend voor privacy/vertrouwen-signalen.
+- **Do** geef elke sectie haar eigen structurele taal (rail, checklist, receipt, typografische lijst) in plaats van dezelfde iconkaart overal te herhalen — variatie zit in de compositie, niet alleen in kleur.
 
 ### Don't:
-- **Don't** gebruik Tailwind's koele standaard-grijzen (`text-gray-300/400/500`) — `AdvertiserCTA.tsx` doet dit nu nog op meerdere plekken (labelteksten) en is daarmee een afwijking van dit systeem; een fixtarget voor een volgende `audit`/`polish`-pass, geen patroon om te herhalen.
+- **De Kicker-Regel (harde ban, geen uitzondering).** **Don't** plaats een pil-badge/kicker/eyebrow boven een koptekst — de kop draagt zijn eigen gewicht. Dit patroon is site-breed verwijderd (Hero, HowItWorks, PrivacyTrust, UserSignupCTA, AdvertiserCTA, FAQ); een nieuwe sectie mag dit niet opnieuw introduceren, ook niet "net dit ene keertje". De enige uitzondering: functionele filterchips die content sturen (zie Filter Chips) — die zijn geen kicker omdat ze interactief zijn, niet decoratief.
 - **Don't** herkleur `InteractiveSimulator`'s platform-mockups naar het amber-palet — hun ChatGPT/Gemini/Claude-kleuren zijn een bewuste uitzondering.
 - **Don't** voeg een paars/blauw generiek SaaS-gradiënt toe — de amber/koffie-identiteit is het hele punt.
-- **Don't** nest kaarten in kaarten zonder duidelijke reden (`PrivacyTrust.tsx`'s kaart-in-kaart is een bestaande uitzondering, geen patroon om te herhalen).
-- **Don't** herhaal het icoontegel-boven-kop patroon (HowItWorks, PrivacyTrust, AdvertiserCTA doen dit al drie keer) zonder variatie in een nieuwe sectie.
+- **Don't** nest kaarten in kaarten — de vroegere `PrivacyTrust.tsx`-uitzondering is inmiddels zelf opgelost (verticale checklist i.p.v. geneste mini-kaarten); er is nu geen actieve uitzondering meer.
+- **Don't** gebruik een unicode-emoji als icoon (het ☕-teken is overal vervangen door de lucide `Coffee`-component — Header, Footer, InteractiveSimulator's ad-badges). Icons komen altijd uit lucide-react, nooit uit tekst-glyphs.

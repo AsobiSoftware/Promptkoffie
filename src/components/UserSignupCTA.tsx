@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { Coffee, ArrowRight, CheckCircle2, Loader2, Sparkles, Gift } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 import { UserSignupPayload, SignupResponse } from '../types';
+
+const receiptLines: { label: string; value: string }[] = [
+  { label: 'Inschrijving wachtlijst', value: '€ 0,00' },
+  { label: 'Verplichte kliks', value: 'geen' },
+  { label: 'Impact op browsersnelheid', value: 'geen' },
+  { label: 'Uitbetaling', value: 'maandelijks' },
+];
 
 export const UserSignupCTA: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -46,63 +53,76 @@ export const UserSignupCTA: React.FC = () => {
 
   return (
     <section id="inschrijven" className="py-20 bg-gradient-to-b from-white to-[#FAF8F5] border-b border-[#E7E1D8]/60">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FAF8F5] border-2 border-[#B45309]/30 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden text-center">
-          {/* Subtle background element */}
+      <div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="receipt-edge bg-white border border-[#E7E1D8] shadow-xl relative overflow-hidden text-center pt-8 px-6 sm:px-8 pb-6">
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FEF3C7] border border-[#FDE68A] text-[#92400E] text-xs font-bold mb-6">
-            <Gift className="w-4 h-4 text-[#B45309]" />
-            <span>100% Gratis & Vrijblijvend</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-5xl font-bold text-[#1C1917] font-serif mb-4 leading-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#1C1917] font-serif mb-3 leading-tight relative z-10">
             Word bèta-tester en verdien direct jouw eerste kop koffie.
           </h2>
 
-          <p className="text-base sm:text-lg text-[#57534E] max-w-2xl mx-auto mb-8">
-            Laat je e-mailadres achter en krijg als eerste toegang tot de Chrome & Edge extensie zodra de bèta opent. Geen spam, uitsluitend updates over je uitbetaling.
+          <p className="text-sm text-[#57534E] max-w-sm mx-auto mb-6 relative z-10">
+            Laat je e-mailadres achter en krijg als eerste toegang zodra de bèta opent.
           </p>
 
-          {/* User Form */}
-          <form onSubmit={handleSubmit} noValidate className="max-w-lg mx-auto space-y-4">
-            <div className="flex flex-col sm:flex-row gap-2.5 p-2 bg-white border border-[#E7E1D8] rounded-2xl shadow-md">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Vul hier je e-mailadres in..."
-                className="flex-1 px-4 py-3 rounded-xl text-sm text-[#1C1917] placeholder:text-[#A8A29E] bg-transparent focus:outline-none focus:ring-2 focus:ring-[#B45309]/30"
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-[#B45309] hover:bg-[#92400E] text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md disabled:opacity-70 whitespace-nowrap"
-              >
-                {loading ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                ) : (
-                  <>
-                    <span>Schrijf je in</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </>
-                )}
-              </button>
+          {/* Bonregels */}
+          <div className="relative z-10 text-left mb-6 border-t border-b border-dashed border-[#D6CFC2] py-4">
+            {receiptLines.map((line) => (
+              <div key={line.label} className="flex items-baseline gap-2 py-1 text-xs text-[#57534E]">
+                <span className="shrink-0">{line.label}</span>
+                <span className="flex-1 border-b border-dotted border-[#C9C1B4] translate-y-[-3px]" />
+                <span className="font-mono tabular-nums shrink-0 text-[#1C1917]">{line.value}</span>
+              </div>
+            ))}
+            <div className="flex items-baseline gap-2 pt-2 mt-1 border-t border-[#E7E1D8] text-sm font-bold text-[#1C1917]">
+              <span className="shrink-0">Totaal vandaag</span>
+              <span className="flex-1" />
+              <span className="font-mono tabular-nums shrink-0">€ 0,00 · vrijblijvend</span>
             </div>
+          </div>
+
+          {/* User Form */}
+          <form onSubmit={handleSubmit} noValidate className="relative z-10 space-y-3">
+            <label htmlFor="usersignup-email" className="sr-only">
+              E-mailadres
+            </label>
+            <input
+              id="usersignup-email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Vul hier je e-mailadres in..."
+              className="w-full px-4 py-3 rounded-xl text-sm text-[#1C1917] placeholder:text-[#A8A29E] bg-[#FAF8F5] border border-[#E7E1D8] focus:outline-none focus:ring-2 focus:ring-[#B45309]/30 text-center"
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#B45309] hover:bg-[#92400E] text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md disabled:opacity-70"
+            >
+              {loading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <>
+                  <span>Schrijf je in</span>
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
+            </button>
           </form>
 
           {/* Feedback message */}
           {status && (
             <div
-              className={`mt-6 p-4 rounded-xl text-xs sm:text-sm font-medium max-w-lg mx-auto flex items-start gap-2.5 text-left ${
+              role="alert"
+              aria-live="polite"
+              className={`mt-4 p-3.5 rounded-xl text-xs font-medium relative z-10 flex items-start gap-2.5 text-left ${
                 status.success
                   ? 'bg-amber-100/80 border border-amber-300 text-amber-950'
                   : 'bg-rose-50 border border-rose-200 text-rose-800'
               }`}
             >
-              <CheckCircle2 className="w-5 h-5 text-[#B45309] shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-4 h-4 text-[#B45309] shrink-0 mt-0.5" />
               <div>
                 <p className="font-bold">{status.message}</p>
                 {status.totalUsers && (
@@ -113,13 +133,6 @@ export const UserSignupCTA: React.FC = () => {
               </div>
             </div>
           )}
-
-          {/* Bullet highlights */}
-          <div className="mt-8 pt-6 border-t border-[#E7E1D8] flex flex-wrap items-center justify-center gap-6 text-xs text-[#78716C]">
-            <span>✓ Geen verplichte kliks</span>
-            <span>✓ 100% Onschadelijk voor browser-snelheid</span>
-            <span>✓ Maandelijks op je bank</span>
-          </div>
         </div>
       </div>
     </section>

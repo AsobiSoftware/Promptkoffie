@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-03T17:00:00.000Z",
+  "generatedAt": "2026-08-03T19:30:00.000Z",
   "title": "Design System: Promptkoffie",
   "extensions": {
     "colorMeta": {
@@ -24,7 +24,7 @@
       "headline": { "displayName": "Headline", "purpose": "Sectiekoppen (H2)." },
       "title": { "displayName": "Title", "purpose": "Kaarttitels (H3): stapkaarten, FAQ-vragen." },
       "body": { "displayName": "Body", "purpose": "Standaard lichaamstekst en leads." },
-      "label": { "displayName": "Label", "purpose": "Formulierlabels, badges, footer-kopjes — altijd uppercase." }
+      "label": { "displayName": "Label", "purpose": "Formulierlabels, footer-kopjes — altijd uppercase." }
     },
     "shadows": [
       { "name": "ambient-card", "value": "0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1)", "purpose": "Kaarten en formulierboxen (shadow-lg/xl/2xl)." },
@@ -54,17 +54,17 @@
       "name": "Dark Button",
       "kind": "button",
       "refersTo": "button-dark",
-      "description": "Inkt-gekleurde secundaire knopvariant, gebruikt in header en Hero-microform.",
+      "description": "Inkt-gekleurde secundaire knopvariant, gebruikt in de header-CTA.",
       "html": "<button class=\"ds-btn-dark\">Schrijf je in</button>",
       "css": ".ds-btn-dark { background: #1C1917; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.75rem; font-weight: 500; font-size: 0.875rem; border: none; cursor: pointer; transition: background 0.2s ease; } .ds-btn-dark:hover { background: #292524; }"
     },
     {
-      "name": "Badge Pill",
+      "name": "Filter Chip",
       "kind": "chip",
-      "refersTo": "badge-pill",
-      "description": "Kleine pil-badge in amber, gebruikt boven sectiekoppen en als statuslabel.",
-      "html": "<span class=\"ds-badge\">Hoe het werkt</span>",
-      "css": ".ds-badge { display: inline-block; background: #FEF3C7; border: 1px solid #FDE68A; color: #92400E; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.75rem; border-radius: 9999px; }"
+      "refersTo": "filter-chip-active",
+      "description": "Functionele categorie-chip (FAQ) die content filtert — géén decoratieve kicker-badge. Actief: inkt-achtergrond; inactief: wit met rand.",
+      "html": "<div class=\"ds-chip-row\"><button class=\"ds-chip ds-chip--active\">Alles</button><button class=\"ds-chip\">Privacy</button></div>",
+      "css": ".ds-chip-row { display: flex; gap: 0.5rem; } .ds-chip { padding: 0.375rem 0.875rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; border: 1px solid #E7E1D8; background: #ffffff; color: #57534E; cursor: pointer; transition: border-color 0.2s ease; } .ds-chip:hover { border-color: rgba(180,83,9,0.4); } .ds-chip--active { background: #1C1917; color: #ffffff; border-color: #1C1917; }"
     },
     {
       "name": "Card Surface",
@@ -91,28 +91,38 @@
       "css": ".ds-label-dark { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #D6D3D1; margin-bottom: 0.375rem; } .ds-input-dark { width: 100%; padding: 0.75rem 1rem; border-radius: 0.75rem; background: #292524; border: 1px solid #44403C; color: #ffffff; font-size: 0.875rem; } .ds-input-dark:focus { outline: none; border-color: #F59E0B; }"
     },
     {
-      "name": "Icon Tile",
+      "name": "Receipt Line",
       "kind": "custom",
-      "refersTo": "icon-tile",
-      "description": "Vierkante icoontegel met amber-gradiënt, gebruikt voor logo en stap-iconen.",
-      "html": "<div class=\"ds-icon-tile\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10 2v2\"/><path d=\"M14 2v2\"/><path d=\"M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1\"/><path d=\"M6 2v2\"/></svg></div>",
-      "css": ".ds-icon-tile { width: 2.5rem; height: 2.5rem; border-radius: 0.75rem; background: linear-gradient(to bottom right, #B45309, #78350F); color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(180,83,9,0.2); }"
+      "refersTo": "receipt",
+      "description": "Bonregel uit UserSignupCTA's 'Stille Kassa'-kaart: omschrijving, stippellijn, monospace waarde.",
+      "html": "<div class=\"ds-receipt-line\"><span>Inschrijving wachtlijst</span><span class=\"ds-receipt-leader\"></span><span class=\"ds-receipt-value\">€ 0,00</span></div>",
+      "css": ".ds-receipt-line { display: flex; align-items: baseline; gap: 0.5rem; padding: 0.25rem 0; font-size: 0.75rem; color: #57534E; } .ds-receipt-leader { flex: 1; border-bottom: 1px dotted #C9C1B4; transform: translateY(-3px); } .ds-receipt-value { font-family: ui-monospace, monospace; font-variant-numeric: tabular-nums; color: #1C1917; }"
+    },
+    {
+      "name": "Step Marker",
+      "kind": "custom",
+      "refersTo": "step-rail",
+      "description": "Marker op de HowItWorks-stappenrail — kleiner/neutraal voor stap 1-2, groter/amber-gradiënt voor de laatste (beloning) stap.",
+      "html": "<div class=\"ds-step-marker ds-step-marker--accent\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"9\"/></svg></div>",
+      "css": ".ds-step-marker { width: 3rem; height: 3rem; border-radius: 1rem; display: flex; align-items: center; justify-content: center; background: #FAF8F5; border: 1px solid #E7E1D8; color: #B45309; } .ds-step-marker--accent { width: 3.5rem; height: 3.5rem; background: linear-gradient(to bottom right, #B45309, #78350F); border: none; color: #ffffff; }"
     }
   ],
   "narrative": {
     "northStar": "De Stille Kassa",
-    "overview": "Promptkoffie's visual system is an honest, transparent value-exchange made tangible: a wachtmoment tijdens een AI-antwoord wordt omgezet in een klein, eerlijk bedrag, zonder opzichtige game- of casino-mechaniek eromheen. De uitvoering is speels, verrassend en vrolijk in stem en copy (☕-emoji, warme micro-teksten, een levende demo-simulator), terwijl de onderliggende componenten — knoppen, kaarten, velden — bewust zacht en geruststellend blijven: grote radii, gedempte randen, ambient gloed in plaats van harde schaduwen. De kleurwereld is bijna volledig Tailwind's eigen amber- en stone-schalen, met twee bewust 'verwarmde' uitzonderingen (achtergrond en randen). Emerald is strikt gereserveerd voor privacy/vertrouwen-signalen; rose komt maar op twee plekken voor. Er is precies één visuele uitzondering: de InteractiveSimulator, die doelbewust de echte interfacekleuren van ChatGPT/Gemini/Claude nabootst.",
+    "overview": "Promptkoffie's visual system is an honest, transparent value-exchange made tangible: a wachtmoment tijdens een AI-antwoord wordt omgezet in een klein, eerlijk bedrag, zonder opzichtige game- of casino-mechaniek eromheen. De uitvoering is speels, verrassend en vrolijk in stem en copy, terwijl de onderliggende componenten — knoppen, kaarten, velden — bewust zacht en geruststellend blijven: grote radii, gedempte randen, ambient gloed in plaats van harde schaduwen. Elke sectie heeft inmiddels haar eigen structurele taal (stappenrail, checklist, bonnetje, typografische lijst) in plaats van herhaalde iconkaarten, en geen enkele sectie plaatst nog een kicker-badge boven zijn koptekst. De kleurwereld is bijna volledig Tailwind's eigen amber- en stone-schalen, met twee bewust 'verwarmde' uitzonderingen (achtergrond en randen). Emerald is strikt gereserveerd voor privacy/vertrouwen-signalen; rose komt maar op twee plekken voor. Er is precies één visuele uitzondering: de InteractiveSimulator's platform-mimicry-binnenkant, die doelbewust de echte interfacekleuren van ChatGPT/Gemini/Claude nabootst.",
     "keyCharacteristics": [
       "Amber-op-crème als enige merkkleur, nooit paars/blauw SaaS-gradients.",
       "Warme stone-neutralen voor tekst, nooit koele Tailwind grays.",
       "Grote, zachte radii overal (rounded-xl minimum).",
       "Ambient amber-gloed (blur-3xl) i.p.v. harde schaduwen als sfeermaker.",
+      "Geen kickers/eyebrows boven koppen — elke sectie heeft een eigen structurele taal in plaats van herhaalde iconkaarten.",
       "Instrument Serif voor koppen, Plus Jakarta Sans voor de rest — geen Inter, geen systeemfont."
     ],
     "rules": [
+      { "name": "De Kicker-Regel", "body": "Geen pil-badge/kicker/eyebrow boven een koptekst — de kop draagt zijn eigen gewicht. Harde ban, site-breed toegepast; functionele filterchips die content sturen zijn de enige uitzondering.", "section": "components" },
       { "name": "De Warme-Neutraal Regel", "body": "Tekst- en oppervlakte-neutralen zijn altijd warm stone-getint, nooit koel grijs — koel grijs leest als generieke SaaS, warm stone leest als koffiezaak.", "section": "colors" },
       { "name": "De Amber-Gradiënt Regel", "body": "De #B45309→#78350F-gradiënt is gereserveerd voor enkelvoudige merkankers (logo, hero-icoon), niet om over elk icoontje te plakken.", "section": "colors" },
-      { "name": "De Third-Party-Uitzondering", "body": "InteractiveSimulator.tsx's interne chat-UI-kleuren bootsen bewust ChatGPT/Gemini/Claude na en vallen buiten dit designsysteem.", "section": "colors" },
+      { "name": "De Third-Party-Uitzondering", "body": "InteractiveSimulator.tsx's interne chat-UI-kleuren en platform-mimicry-typografie bootsen bewust ChatGPT/Gemini/Claude na en vallen buiten dit designsysteem; Promptkoffie's eigen UI binnen dezelfde mockup (koffiesaldo-badge, ad-kaart, formulier) volgt wél het normale systeem.", "section": "colors" },
       { "name": "De Eén-Serif-Regel", "body": "Instrument Serif verschijnt uitsluitend op koppen; lichaamstekst, labels en UI-copy blijven altijd Plus Jakarta Sans.", "section": "typography" },
       { "name": "De Geen-Harde-Schaduw Regel", "body": "Geen enkele schaduw in dit systeem is scherp of zwart-op-wit hard; alles is diffuus en ofwel neutraal ofwel in merkkleur getint.", "section": "elevation" }
     ],
@@ -121,14 +131,15 @@
       "Do gebruik warme stone-neutralen (#57534E/#78716C/#A8A29E) voor alle secundaire tekst — nooit text-gray-*.",
       "Do houd radii groot en zacht (rounded-xl als absoluut minimum) — geen scherpe hoeken.",
       "Do houd ambient gloed-vlekken in amber — nooit in een andere kleurtoon.",
-      "Do reserveer emerald uitsluitend voor privacy/vertrouwen-signalen."
+      "Do reserveer emerald uitsluitend voor privacy/vertrouwen-signalen.",
+      "Do geef elke sectie haar eigen structurele taal (rail, checklist, receipt, typografische lijst) in plaats van dezelfde iconkaart overal te herhalen."
     ],
     "donts": [
-      "Don't gebruik Tailwind's koele standaard-grijzen (text-gray-300/400/500) — AdvertiserCTA.tsx doet dit nu nog op meerdere plekken en is daarmee een afwijking van dit systeem.",
+      "Don't plaats een pil-badge/kicker/eyebrow boven een koptekst — harde ban, site-breed verwijderd. Functionele filterchips zijn de enige uitzondering.",
       "Don't herkleur InteractiveSimulator's platform-mockups naar het amber-palet — hun ChatGPT/Gemini/Claude-kleuren zijn een bewuste uitzondering.",
       "Don't voeg een paars/blauw generiek SaaS-gradiënt toe — de amber/koffie-identiteit is het hele punt.",
-      "Don't nest kaarten in kaarten zonder duidelijke reden (PrivacyTrust.tsx's kaart-in-kaart is een bestaande uitzondering).",
-      "Don't herhaal het icoontegel-boven-kop patroon zonder variatie in een nieuwe sectie."
+      "Don't nest kaarten in kaarten — de vroegere PrivacyTrust-uitzondering is zelf opgelost, er is nu geen actieve uitzondering meer.",
+      "Don't gebruik een unicode-emoji als icoon — icons komen altijd uit lucide-react."
     ]
   }
 }

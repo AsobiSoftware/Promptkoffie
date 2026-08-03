@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Lock, EyeOff, FileText, CheckCircle2 } from 'lucide-react';
+import { Lock, EyeOff, FileText, CheckCircle2 } from 'lucide-react';
 
 export const PrivacyTrust: React.FC = () => {
   const points = [
@@ -27,13 +27,7 @@ export const PrivacyTrust: React.FC = () => {
     <section id="privacy" className="py-20 bg-[#FAF8F5] relative border-b border-[#E7E1D8]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white border border-[#E7E1D8] rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden">
-          {/* Subtle accent badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold mb-6">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>Privacy First Architectuur</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             {/* Left Header */}
             <div className="lg:col-span-5 space-y-4">
               <h2 className="text-3xl sm:text-4xl font-bold text-[#1C1917] font-serif leading-tight">
@@ -55,20 +49,17 @@ export const PrivacyTrust: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Points Grid */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Right: verticale checklist, geen kaart-in-kaart */}
+            <div className="lg:col-span-7 divide-y divide-[#E7E1D8]">
               {points.map((p, idx) => {
                 const IconComp = p.icon;
                 return (
-                  <div
-                    key={idx}
-                    className="p-5 bg-[#FAF8F5] border border-[#E7E1D8] rounded-2xl flex flex-col justify-between hover:border-emerald-500/40 transition-colors"
-                  >
+                  <div key={idx} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
+                    <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                      <IconComp className="w-4.5 h-4.5" />
+                    </div>
                     <div>
-                      <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3">
-                        <IconComp className="w-5 h-5" />
-                      </div>
-                      <h3 className="text-sm font-bold text-[#1C1917] mb-1.5 font-serif">
+                      <h3 className="text-sm font-bold text-[#1C1917] mb-1 font-serif">
                         {p.title}
                       </h3>
                       <p className="text-xs text-[#57534E] leading-relaxed">

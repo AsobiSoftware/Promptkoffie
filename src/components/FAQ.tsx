@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, Coffee } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { FAQItem } from '../types';
+
+const categoryLabels: Record<FAQItem['category'] | 'alles', string> = {
+  alles: 'Alles',
+  gebruikers: 'Gebruikers',
+  privacy: 'Privacy',
+  adverteerders: 'Adverteerders',
+};
 
 export const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [activeCategory, setActiveCategory] = useState<FAQItem['category'] | 'alles'>('alles');
 
   const faqs: FAQItem[] = [
     {
@@ -38,14 +46,15 @@ export const FAQ: React.FC = () => {
     },
   ];
 
+  const visibleFaqs = faqs
+    .map((faq, idx) => ({ faq, idx }))
+    .filter(({ faq }) => activeCategory === 'alles' || faq.category === activeCategory);
+
   return (
     <section className="py-20 bg-white border-b border-[#E7E1D8]/60">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <span className="text-xs font-bold text-[#B45309] uppercase tracking-wider bg-[#FEF3C7] px-3 py-1 rounded-full border border-[#FDE68A]">
-            Veelgestelde Vragen
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1C1917] mt-3 mb-4 font-serif">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#1C1917] mb-4 font-serif">
             Alles wat je wilt weten over Promptkoffie
           </h2>
           <p className="text-base text-[#57534E]">
@@ -53,8 +62,26 @@ export const FAQ: React.FC = () => {
           </p>
         </div>
 
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+          {(Object.keys(categoryLabels) as (FAQItem['category'] | 'alles')[]).map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat)}
+              aria-pressed={activeCategory === cat}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-colors cursor-pointer ${
+                activeCategory === cat
+                  ? 'bg-[#1C1917] text-white border-[#1C1917]'
+                  : 'bg-white text-[#57534E] border-[#E7E1D8] hover:border-[#B45309]/40'
+              }`}
+            >
+              {categoryLabels[cat]}
+            </button>
+          ))}
+        </div>
+
         <div className="space-y-3">
-          {faqs.map((faq, idx) => {
+          {visibleFaqs.map(({ faq, idx }) => {
             const isOpen = openIndex === idx;
             return (
               <div

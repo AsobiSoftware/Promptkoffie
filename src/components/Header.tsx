@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
           {/* Clean Top Action */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleNavClick('hero-signup')}
+              onClick={() => handleNavClick('demo')}
               className="bg-[#1C1917] hover:bg-[#292524] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all shadow-sm flex items-center gap-2 group cursor-pointer"
             >
               <span>Schrijf je in</span>

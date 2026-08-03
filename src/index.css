@@ -10,3 +10,27 @@
   }
 }
 
+/* Gekartelde onderrand — het "bonnetje"-motief van UserSignupCTA */
+.receipt-edge {
+  -webkit-mask-image: linear-gradient(#000, #000),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 4px,
+      #000 4px 12px
+    );
+  -webkit-mask-size: 100% calc(100% - 10px), 16.97px 10px;
+  -webkit-mask-position: top left, bottom left;
+  -webkit-mask-repeat: no-repeat, repeat-x;
+  -webkit-mask-composite: source-over;
+  mask-image: linear-gradient(#000, #000),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 4px,
+      #000 4px 12px
+    );
+  mask-size: 100% calc(100% - 10px), 16.97px 10px;
+  mask-position: top left, bottom left;
+  mask-repeat: no-repeat, repeat-x;
+  mask-composite: add;
+}
+
