@@ -1,6 +1,6 @@
 export interface ResendEnv {
   RESEND_API_KEY: string;
-  RESEND_FROM: string; // bv. "PromptKoffie <onboarding@resend.dev>"
+  RESEND_FROM: string; // bv. "Promptkoffie <onboarding@resend.dev>"
 }
 
 export async function sendEmail(

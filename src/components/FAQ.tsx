@@ -18,7 +18,7 @@ export const FAQ: React.FC = () => {
       category: 'gebruikers',
       question: 'Hoeveel kan ik exact verdienen per maand?',
       answer:
-        'Promptkoffie levert een realistisch extraatje: een deel van de advertentie-opbrengst die jouw AI-gebruik oplevert, komt terug op jouw rekening. Hoeveel dat precies wordt hangt af van hoe vaak je AI-tools gebruikt — we delen zodra we live gaan concrete voorbeelden.',
+        'Promptkoffie werkt met een 50/50-split: de helft van de advertentie-opbrengst die jouw AI-gebruik oplevert, komt terug op jouw rekening. Hoeveel dat in euro\'s wordt hangt af van hoe vaak je AI-tools gebruikt — we delen zodra we live gaan concrete voorbeelden.',
     },
     {
       category: 'privacy',

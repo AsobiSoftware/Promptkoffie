@@ -3,19 +3,19 @@
 // zie promptkoffie-emailteksten.md.
 
 export const MAIL_1_USER = {
-  subject: "Je staat op de lijst voor PromptKoffie",
+  subject: "Je staat op de lijst voor Promptkoffie",
   text: `Bedankt voor je inschrijving. Je staat op de lijst.
 
 Je ontvangt van ons in totaal nog 3 mails, niet meer:
 1. Een update zodra de lancering dichterbij komt
-2. Een mail zodra PromptKoffie live staat, met installatielink
+2. Een mail zodra Promptkoffie live staat, met installatielink
 3. Eén herinnering — maar alleen als je 'm dan nog niet geïnstalleerd hebt
 
 Daarna hoor je niks meer van ons, tenzij je zelf contact opneemt.`,
 };
 
 export const MAIL_1_BUSINESS = {
-  subject: "Bedankt voor je interesse in adverteren via PromptKoffie",
+  subject: "Bedankt voor je interesse in adverteren via Promptkoffie",
   text: `Bedankt voor je interesse. We bouwen momenteel de gebruikersbasis op.
 
 Je ontvangt van ons in totaal nog 3 mails, niet meer:

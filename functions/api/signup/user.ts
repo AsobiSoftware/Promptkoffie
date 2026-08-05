@@ -48,7 +48,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     const totalUsers = await countByType(env, "user");
     return json({
       success: true,
-      message: "Hoera! Je bent toegevoegd aan de PromptKoffie bèta-wachtlijst.",
+      message: "Hoera! Je bent toegevoegd aan de Promptkoffie bèta-wachtlijst.",
       totalUsers,
     });
   } catch (err) {

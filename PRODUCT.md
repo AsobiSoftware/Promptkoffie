@@ -13,12 +13,13 @@ Nederlandse AI-gebruikers in brede zin (niet beperkt tot studenten) die gratis t
 Promptkoffie is een Chrome/Edge-browserextensie die een korte, niet-opdringerige advertentie toont tijdens het wachten op een AI-antwoord en een deel van de advertentie-inkomsten uitkeert aan de gebruiker (maandelijks op de bankrekening). Doel van de oprichter: eigen studieschuld deels aflossen — geen schaalbaar bedrijf. Verwachte levensduur van het product: 1-2 jaar.
 
 ## Positioning
-Verzilvert een wachtmoment dat vergelijkbare cashback/reward-extensies niet aanraken: een niet-opdringerige micro-advertentie precies tijdens de 3-8 seconden dat een AI-antwoord nog gegenereerd wordt, gecombineerd met een expliciete privacybelofte (leest nooit prompts of antwoorden, "100% Zero-Read") en geen verplichte klik om beloond te worden.
+Verzilvert een wachtmoment dat vergelijkbare cashback/reward-extensies niet aanraken: een niet-opdringerige micro-advertentie precies tijdens de 3-8 seconden dat een AI-antwoord nog gegenereerd wordt, gecombineerd met een expliciete privacybelofte (leest nooit prompts of antwoorden, "100% Zero-Read") en geen verplichte klik om beloond te worden. **Kernbelofte/USP: een 50/50-split** — de helft van de advertentie-opbrengst gaat naar de gebruiker, bevestigd door de oprichter (niet langer een aan te nemen cijfer) en moet zichtbaar en herhaald op de site terugkomen als hét onderscheidende element.
 
 ## Operating Context
 Werkt naast ChatGPT, Gemini, Claude en Perplexity (gratis tiers) in Chrome en Edge. De huidige codebase is de marketing/signup-landingspagina (React + Vite + Tailwind) die wachtlijst-inschrijvingen verzamelt vóór de extensie zelf live gaat; backend is Cloudflare Pages Functions (bewuste latere overstap naar Vercel), data in Google Sheets, e-mail via Resend.
 
 ## Capabilities and Constraints
+- **Bevestigd feit (niet aannemen, niet als ongefundeerd cijfer wegstrepen)**: de revenue-split met gebruikers is 50/50.
 - Geen nep-statistieken: alleen echte tellingen uit Google Sheets, geen kunstmatige baseline-getallen.
 - Geen verplichte klik vereist voor gebruikersbeloning.
 - Side-project schaal: verwachte levensduur 1-2 jaar, geen groeiambitie of VC-achtige schaalpretenties in toon of positionering.

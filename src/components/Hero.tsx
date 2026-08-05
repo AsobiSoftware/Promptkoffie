@@ -60,7 +60,7 @@ export const Hero: React.FC = () => {
 
           {/* Core Value Proposition */}
           <p className="text-base sm:text-lg text-[#57534E] font-medium leading-relaxed mb-8 max-w-2xl mx-auto">
-            Promptkoffie toont 1 regel advertenties in je scherm terwijl je wacht op je antwoord — zonder ooit mee te lezen — en deelt de opbrengst eerlijk met jou.
+            Promptkoffie toont 1 regel advertenties in je scherm terwijl je wacht op je antwoord zonder ooit mee te lezen en deelt de opbrengsten 50/50 met jou.
           </p>
 
           {/* Interactive Simulator + los, opvallend inschrijfformulier eronder */}
@@ -101,11 +101,10 @@ export const Hero: React.FC = () => {
                 <div
                   role="alert"
                   aria-live="polite"
-                  className={`mt-3 px-3 py-2.5 rounded-lg text-xs font-medium flex items-center gap-2 ${
-                    status.success
+                  className={`mt-3 px-3 py-2.5 rounded-lg text-xs font-medium flex items-center gap-2 ${status.success
                       ? 'bg-amber-50 border border-amber-200 text-amber-800'
                       : 'bg-rose-50 border border-rose-200 text-rose-800'
-                  }`}
+                    }`}
                 >
                   <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
                   <p>{status.message}</p>

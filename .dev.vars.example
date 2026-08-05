@@ -9,4 +9,4 @@ GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nJOUW_KEY_HIER\n-----END PRIVATE
 GOOGLE_SHEET_ID=jouw-sheet-id-uit-de-url
 
 RESEND_API_KEY=re_jouw_resend_key
-RESEND_FROM="PromptKoffie <onboarding@resend.dev>"
+RESEND_FROM="Promptkoffie <onboarding@resend.dev>"

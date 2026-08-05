@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, Sparkles, Coffee, Clock } from 'lucide-react';
+import { Download, Sparkles, Euro, Clock } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   const steps = [
@@ -26,8 +26,8 @@ export const HowItWorks: React.FC = () => {
       title: 'Spaar mee met elke advertentie',
       subtitle: 'Eind van de maand op je bank',
       description:
-        'Je ontvangt een deel van de advertentie-opbrengsten terug. Elke seconde wachttijd bouwt zo automatisch je koffiesaldo op.',
-      icon: Coffee,
+        'Je ontvangt 50% van elke advertentie-opbrengst terug. Zo bouw je in je wachttijd automatisch je saldo op.',
+      icon: Euro,
       accent: true,
     },
   ];
@@ -53,13 +53,12 @@ export const HowItWorks: React.FC = () => {
               return (
                 <div key={step.number} className="relative flex items-start gap-5 md:gap-6">
                   <div
-                    className={`relative z-10 shrink-0 flex items-center justify-center rounded-2xl shadow-md transition-transform ${
-                      step.accent
+                    className={`relative z-10 shrink-0 flex items-center justify-center rounded-2xl shadow-md transition-transform ${step.accent
                         ? 'w-14 h-14 bg-gradient-to-br from-[#B45309] to-[#78350F] text-white'
                         : 'w-12 h-12 bg-[#FAF8F5] border border-[#E7E1D8] text-[#B45309]'
-                    }`}
+                      }`}
                   >
-                    <IconComponent className={step.accent ? 'w-6 h-6' : 'w-5 h-5'} />
+                    {IconComponent && <IconComponent className={step.accent ? 'w-6 h-6' : 'w-5 h-5'} />}
                   </div>
 
                   <div className="flex-1 pt-1">
