@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Je staat op de wachtlijst — Promptkoffie</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="Je inschrijving voor de Promptkoffie-wachtlijst is gelukt." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --amber: #b45309;
+        --amber-roast: #78350f;
+        --ink: #1c1917;
+        --cream: #faf8f5;
+        --border: #e7e1d8;
+        --text-secondary: #57534e;
+        --text-tertiary: #78716c;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .card {
+        position: relative;
+        width: 100%;
+        max-width: 32rem;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        box-shadow: 0 20px 25px -5px rgba(28, 25, 23, 0.08);
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        margin-bottom: 1.75rem;
+        text-decoration: none;
+        color: inherit;
+      }
+      .logo-mark {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, var(--amber), var(--amber-roast));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+      .logo-text {
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      h1 {
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-size: 1.875rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 0.875rem;
+        text-wrap: balance;
+      }
+      p {
+        color: var(--text-secondary);
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        margin: 0 0 1rem;
+      }
+      p.small {
+        color: var(--text-tertiary);
+        font-size: 0.8125rem;
+        margin-bottom: 0;
+      }
+      .rule {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1.75rem 0 1.25rem;
+      }
+      .back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        background: var(--amber);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.875rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        transition: background 0.2s ease;
+      }
+      .back:hover {
+        background: #92400e;
+      }
+      .back:focus-visible {
+        outline: 2px solid var(--amber);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <a class="logo" href="/">
+        <span class="logo-mark" aria-hidden="true">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M10 2v2" />
+            <path d="M14 2v2" />
+            <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+            <path d="M6 2v2" />
+          </svg>
+        </span>
+        <span class="logo-text">Promptkoffie</span>
+      </a>
+
+      <h1>Je staat op de wachtlijst.</h1>
+
+      <p>
+        Je inschrijving is binnen. Je krijgt één mail zodra de bèta opent — verder houden we je
+        mailbox met rust.
+      </p>
+
+      <hr class="rule" />
+
+      <p class="small">
+        In aanbouw. Er is nog geen advertentie verkocht en er is nog niets uitgekeerd. Je hoort het
+        als eerste, inclusief wat er misgaat.
+      </p>
+
+      <a class="back" href="/">Terug naar de site</a>
+    </main>
+  </body>
+</html>

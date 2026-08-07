@@ -1,11 +1,7 @@
 import React from 'react';
 import { Coffee, ShieldCheck, Heart } from 'lucide-react';
 
-interface FooterProps {
-  onScrollTo: (id: string) => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
+export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#1C1917] border-t border-stone-800 pt-12 pb-8 text-stone-400 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,28 +30,19 @@ export const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
             </h4>
             <ul className="space-y-2">
               <li>
-                <button
-                  onClick={() => onScrollTo('hoe-werkt-het')}
-                  className="hover:text-amber-400 transition-colors cursor-pointer"
-                >
+                <a href="#hoe-werkt-het" className="hover:text-amber-400 transition-colors">
                   Hoe werkt het?
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onScrollTo('demo')}
-                  className="hover:text-amber-400 transition-colors cursor-pointer"
-                >
-                  Simulator Demo
-                </button>
+                <a href="#zo-ziet-het-eruit" className="hover:text-amber-400 transition-colors">
+                  Zo ziet het eruit
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onScrollTo('privacy')}
-                  className="hover:text-amber-400 transition-colors cursor-pointer"
-                >
-                  Privacy Beleid
-                </button>
+                <a href="#privacy" className="hover:text-amber-400 transition-colors">
+                  Privacy
+                </a>
               </li>
             </ul>
           </div>
@@ -67,12 +54,12 @@ export const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
             </h4>
             <ul className="space-y-2">
               <li>
-                <button
-                  onClick={() => onScrollTo('adverteren')}
-                  className="hover:text-amber-400 transition-colors cursor-pointer font-semibold text-amber-500"
+                <a
+                  href="#adverteren"
+                  className="hover:text-amber-400 transition-colors font-semibold text-amber-500"
                 >
                   Adverteren op Promptkoffie
-                </button>
+                </a>
               </li>
               <li className="pt-2 text-stone-500">
                 <span>Contact: <strong className="text-stone-300">hallo@promptkoffie.nl</strong></span>

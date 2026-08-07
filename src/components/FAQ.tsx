@@ -39,7 +39,7 @@ export const FAQ: React.FC = () => {
         'Nee. De extensie is ultra-lichtgewicht (< 50 KB) en beïnvloedt de generatiesnelheid van de AI op geen enkele manier. De banner verdwijnt automatisch zodra het antwoord klaar is.',
     },
     {
-      category: 'adverteerders',
+      category: 'gebruikers',
       question: 'Op welke browsers werkt Promptkoffie?',
       answer:
         'Promptkoffie is ontworpen voor Google Chrome en Microsoft Edge.',
