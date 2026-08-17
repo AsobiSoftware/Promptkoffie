@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagina niet gevonden — Promptkoffie</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-FrZpsOGeqKO1j5CBRejdm.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+    <style>
+      :root {
+        --color-purple: #663399;
+        --color-ink: #241a33;
+        --color-cream: #F7F1E3;
+        --color-yellow: #FBBA00;
+        --color-body: #4a3f57;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-cream);
+        color: var(--color-ink);
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        padding: 24px;
+      }
+      .card {
+        max-width: 480px;
+        width: 100%;
+        text-align: center;
+      }
+      .code {
+        font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 15px;
+        color: var(--color-purple);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      h1 {
+        font-size: clamp(28px, 5vw, 36px);
+        margin: 12px 0 8px;
+      }
+      p {
+        color: var(--color-body);
+        line-height: 1.5;
+        margin: 0 0 28px;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      a.btn {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--color-ink);
+        background: var(--color-yellow);
+        border: 1.5px solid var(--color-ink);
+        padding: 12px 20px;
+        box-shadow: 3px 3px 0 var(--color-ink);
+        transition: transform 150ms, box-shadow 150ms;
+      }
+      a.btn:hover {
+        transform: translate(1px, 1px);
+        box-shadow: 2px 2px 0 var(--color-ink);
+      }
+      a.btn.secondary {
+        background: transparent;
+        box-shadow: none;
+      }
+      a.btn.secondary:hover {
+        transform: none;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <p class="code">404</p>
+      <h1>Deze pagina bestaat niet.</h1>
+      <p>Het adres klopt niet (meer), of de pagina is verplaatst. Hier kun je verder.</p>
+      <div class="links">
+        <a class="btn" href="/">Naar de homepage</a>
+        <a class="btn secondary" href="/over-ons/">Over ons</a>
+        <a class="btn secondary" href="/adverteerders/">Adverteerders</a>
+      </div>
+    </div>
+  </body>
+</html>

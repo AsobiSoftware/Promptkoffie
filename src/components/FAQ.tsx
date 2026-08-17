@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { FAQItem } from '../types';
 
 const categoryLabels: Record<FAQItem['category'] | 'alles', string> = {
@@ -22,27 +21,26 @@ export const FAQ: React.FC = () => {
     },
     {
       category: 'privacy',
-      question: 'Leest de extensie mijn vertrouwelijke prompts of huiswerk opdrachten?',
+      question: 'Leest de extensie mijn vertrouwelijke prompts of huiswerkopdrachten?',
       answer:
         'Absoluut niet. Onze extensie is blind voor alle tekstinhoud. We kijken uitsluitend naar het status-element van het antwoordvenster om te detecteren dat de AI aan het laden is. Er wordt nul tekst verzonden naar onze servers.',
     },
     {
       category: 'gebruikers',
-      question: 'Hoe werkt de uitbetaling aan het eind van de maand?',
+      question: 'Hoe krijg ik mijn aandeel uitbetaald?',
       answer:
-        'Je spaarsaldo wordt automatisch bijgehouden. Op de eerste dag van de nieuwe maand ontvang je het opgespaarde bedrag rechtstreeks op je Nederlandse bankrekening.',
+        'Je aandeel wordt automatisch bijgehouden en staat op jouw naam — je hoeft nergens op te klikken om het op te bouwen. Bèta-testers krijgen als eersten bericht zodra de uitbetaalopties klaarstaan.',
     },
     {
       category: 'gebruikers',
       question: 'Vertraagt de extensie mijn AI of browser?',
       answer:
-        'Nee. De extensie is ultra-lichtgewicht (< 50 KB) en beïnvloedt de generatiesnelheid van de AI op geen enkele manier. De banner verdwijnt automatisch zodra het antwoord klaar is.',
+        'Nee. De extensie grijpt niet in op het genereren van het antwoord en voegt niets toe aan de laadtijd. Ze kijkt alleen of het antwoordvenster nog aan het laden is, en de banner verdwijnt zodra het antwoord er staat.',
     },
     {
       category: 'gebruikers',
       question: 'Op welke browsers werkt Promptkoffie?',
-      answer:
-        'Promptkoffie is ontworpen voor Google Chrome en Microsoft Edge.',
+      answer: 'Promptkoffie is ontworpen voor Google Chrome en Microsoft Edge.',
     },
   ];
 
@@ -51,70 +49,71 @@ export const FAQ: React.FC = () => {
     .filter(({ faq }) => activeCategory === 'alles' || faq.category === activeCategory);
 
   return (
-    <section className="py-20 bg-white border-b border-[#E7E1D8]/60">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1C1917] mb-4 font-serif">
-            Alles wat je wilt weten over Promptkoffie
-          </h2>
-          <p className="text-base text-[#57534E]">
-            Transparant over privacy, verdiensten en hoe het achter de schermen werkt.
-          </p>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+    <section className="px-6 sm:px-[72px] py-14 sm:py-[84px] border-b-[1.5px] border-ink bg-cream">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+        <h2 className="font-bold text-[30px] sm:text-[42px] leading-[1.05] tracking-[-0.03em] max-w-[24ch]">
+          Alles wat je wilt weten over Promptkoffie
+        </h2>
+        <div className="flex flex-wrap gap-2 font-mono text-[12.5px]">
           {(Object.keys(categoryLabels) as (FAQItem['category'] | 'alles')[]).map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setActiveCategory(cat)}
               aria-pressed={activeCategory === cat}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-colors cursor-pointer ${
-                activeCategory === cat
-                  ? 'bg-[#1C1917] text-white border-[#1C1917]'
-                  : 'bg-white text-[#57534E] border-[#E7E1D8] hover:border-[#B45309]/40'
+              className={`px-3.5 py-2 border-[1.5px] border-ink transition-colors ${
+                activeCategory === cat ? 'bg-purple text-white' : 'bg-white text-ink hover:bg-tint'
               }`}
             >
               {categoryLabels[cat]}
             </button>
           ))}
         </div>
+      </div>
 
-        <div className="space-y-3">
-          {visibleFaqs.map(({ faq, idx }) => {
-            const isOpen = openIndex === idx;
-            return (
-              <div
-                key={idx}
-                className="bg-[#FAF8F5] border border-[#E7E1D8] rounded-2xl overflow-hidden transition-all duration-200"
+      <div className="border-t-[1.5px] border-ink">
+        {visibleFaqs.map(({ faq, idx }, i) => {
+          const isOpen = openIndex === idx;
+          const isLast = i === visibleFaqs.length - 1;
+          return (
+            <div
+              key={idx}
+              className={`${isOpen ? 'py-6' : 'py-[22px]'} ${!isLast || isOpen ? 'border-b-[1.5px]' : ''} ${
+                isOpen ? 'border-ink' : 'border-hairline'
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => setOpenIndex(isOpen ? null : idx)}
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${idx}`}
+                className="w-full flex items-center justify-between gap-6 text-left"
               >
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  aria-expanded={isOpen}
-                  aria-controls={`faq-answer-${idx}`}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-semibold text-[#1C1917] hover:text-[#B45309] transition-colors cursor-pointer"
+                <h3
+                  className={
+                    isOpen
+                      ? 'text-[21px] font-bold tracking-[-0.015em]'
+                      : 'text-xl font-medium'
+                  }
                 >
-                  <span className="text-base font-serif">{faq.question}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-[#B45309] shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
+                  {faq.question}
+                </h3>
+                <span className="text-[22px] font-bold text-purple shrink-0" aria-hidden="true">
+                  {isOpen ? '−' : '+'}
+                </span>
+              </button>
 
-                {isOpen && (
-                  <div
-                    id={`faq-answer-${idx}`}
-                    className="px-6 pb-5 pt-1 text-sm text-[#57534E] leading-relaxed border-t border-[#E7E1D8]/40 animate-in fade-in duration-200"
-                  >
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+              {isOpen && (
+                <p
+                  id={`faq-answer-${idx}`}
+                  className="mt-3.5 text-[16.5px] leading-[1.6] text-body max-w-[78ch]"
+                >
+                  {faq.answer}
+                </p>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );

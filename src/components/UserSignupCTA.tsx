@@ -1,49 +1,43 @@
 import React from 'react';
 import { SignupForm } from './SignupForm';
 
-const receiptLines: { label: string; value: string }[] = [
-  { label: 'Inschrijving wachtlijst', value: '€ 0,00' },
-  { label: 'Verplichte kliks', value: 'geen' },
-  { label: 'Impact op browsersnelheid', value: 'geen' },
-  { label: 'Jouw aandeel', value: '50% van de opbrengst' },
-];
-
 export const UserSignupCTA: React.FC = () => {
   return (
     <section
       id="wachtlijst"
-      className="scroll-mt-20 py-20 bg-gradient-to-b from-white to-[#FAF8F5] border-b border-[#E7E1D8]/60"
+      className="scroll-mt-20 bg-purple text-white px-6 sm:px-[72px] py-14 sm:py-[76px] border-b-[1.5px] border-ink"
     >
-      <div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="receipt-edge bg-white border border-[#E7E1D8] shadow-xl relative overflow-hidden text-center pt-8 px-6 sm:px-8 pb-6">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#1C1917] font-serif mb-3 leading-tight relative z-10">
+      <div className="grid grid-cols-1 min-[1100px]:grid-cols-2 gap-12 min-[1100px]:gap-[72px] items-center">
+        <div>
+          <h2 className="font-bold text-[32px] sm:text-[46px] leading-[1.03] tracking-[-0.03em] mb-4">
             Zet jezelf op de wachtlijst.
           </h2>
-
-          <p className="text-sm text-[#57534E] max-w-sm mx-auto mb-6 relative z-10">
+          <p className="text-lg leading-[1.55] text-[#e0d2f2] max-w-[36ch] mb-[30px]">
             Laat je e-mailadres achter en krijg als eerste toegang zodra de bèta opent.
           </p>
+          <SignupForm formId="onderaan" />
+        </div>
 
-          {/* Bonregels */}
-          <div className="relative z-10 text-left mb-6 border-t border-b border-dashed border-[#D6CFC2] py-4">
-            {receiptLines.map((line) => (
-              <div key={line.label} className="flex items-baseline gap-2 py-1 text-xs text-[#57534E]">
-                <span className="shrink-0">{line.label}</span>
-                <span className="flex-1 border-b border-dotted border-[#C9C1B4] translate-y-[-3px]" />
-                <span className="font-mono tabular-nums shrink-0 text-[#1C1917]">{line.value}</span>
-              </div>
-            ))}
-            <div className="flex items-baseline gap-2 pt-2 mt-1 border-t border-[#E7E1D8] text-sm font-bold text-[#1C1917]">
-              <span className="shrink-0">Totaal vandaag</span>
-              <span className="flex-1" />
-              <span className="font-mono tabular-nums shrink-0">€ 0,00 · vrijblijvend</span>
-            </div>
+        <div className="bg-cream text-ink border-[1.5px] border-ink px-6 sm:px-8 py-[30px] shadow-[6px_6px_0_rgba(20,10,35,0.35)]">
+          <div className="flex justify-between pb-3.5 border-b-[1.5px] border-ink text-base">
+            <span>Inschrijving wachtlijst</span>
+            <strong>€ 0,00</strong>
           </div>
-
-          <div className="relative z-10">
-            <SignupForm formId="onderaan" size="compact" />
+          <div className="flex justify-between py-3.5 border-b border-hairline text-base">
+            <span className="text-body">Verplichte kliks</span>
+            <strong>geen</strong>
+          </div>
+          <div className="flex justify-between py-3.5 border-b border-hairline text-base">
+            <span className="text-body">Impact op browsersnelheid</span>
+            <strong>geen</strong>
+          </div>
+          <div className="flex justify-between py-3.5 border-b-[1.5px] border-ink text-base">
+            <span className="text-body">Jouw aandeel</span>
+            <strong className="text-purple">50% van de opbrengst</strong>
+          </div>
+          <div className="flex justify-between pt-4 text-[19px] font-bold">
+            <span>Totaal vandaag</span>
+            <span>€ 0,00 · vrijblijvend</span>
           </div>
         </div>
       </div>

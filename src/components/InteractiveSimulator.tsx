@@ -1,52 +1,29 @@
 import React, { useState } from 'react';
-import { Coffee, X } from 'lucide-react';
 
 /**
- * InteractiveSimulator — herschreven.
- *
- * Drie problemen met de vorige versie, alle drie opgelost door één keuze:
- * één licht thema in plaats van drie authentieke re-creaties.
- *
- * 1. Kleur — ChatGPT-donker, Gemini-lichtblauw en Claude-crème stonden naast
- *    elkaar in een zwarte browserframe. Nu deelt elk platform dezelfde
- *    lichte kaart uit DESIGN.md; alleen het naampje en het accentstipje
- *    wisselen.
- * 2. Gewicht — geen zijbalk-mockup en geen invoerbalk meer. Die voegden
- *    hoogte toe zonder aan de kernvraag te werken: hoe ziet het
- *    advertentiemoment eruit. Van ~340px+ naar een compacte kaart.
- * 3. Geloofwaardigheid — de vorige versie toonde Swapfiets, Bol.com en
- *    Duolingo als lopende advertenties, terwijl HonestStatus vlak daarna
- *    zegt "nog geen advertentie verkocht". Nu een expliciet gelabeld
- *    voorbeeld, en het hardgecodeerde "Koffiesaldo: €1,42" is weg — dat was
- *    hetzelfde soort verzonnen cijfer als averageCupsPerMonth in stats.ts.
+ * De "chatmock" — het bewijs in de rechterkolom van de hero. Toont hoe de
+ * ad-regel verschijnt onder je eigen bericht terwijl het antwoord wordt
+ * gegenereerd. De platformchips eronder zijn een echte tab-switch (geen
+ * aparte mockup per platform meer, één kaart die van prompt/url wisselt).
  */
 
 type PlatformId = 'chatgpt' | 'claude' | 'gemini';
 
-const platforms: Record<
-  PlatformId,
-  { label: string; dot: string; url: string; prompt: string; thinking: string }
-> = {
+const platforms: Record<PlatformId, { label: string; url: string; prompt: string }> = {
   chatgpt: {
     label: 'ChatGPT',
-    dot: '#10A37F',
     url: 'chatgpt.com',
     prompt: 'Schrijf de 3 belangrijkste conclusies uit dit rapport.',
-    thinking: 'Antwoord wordt gegenereerd',
   },
   claude: {
     label: 'Claude',
-    dot: '#DA7756',
     url: 'claude.ai',
     prompt: 'Herschrijf deze e-mail in een vriendelijke, professionele toon.',
-    thinking: 'Antwoord wordt gegenereerd',
   },
   gemini: {
     label: 'Gemini',
-    dot: '#4285F4',
     url: 'gemini.google.com',
     prompt: 'Geef een kortere samenvatting van dit document.',
-    thinking: 'Antwoord wordt gegenereerd',
   },
 };
 
@@ -57,13 +34,55 @@ export const InteractiveSimulator: React.FC = () => {
   const active = platforms[platform];
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      {/* Platformkeuze — één segmented control, geen los gekleurde knoppen per merk */}
-      <div
-        role="tablist"
-        aria-label="Kies een platform"
-        className="inline-flex items-center gap-1 mx-auto mb-4 p-1 bg-[#F0EBE1] border border-[#E7E1D8] rounded-xl"
-      >
+    <div>
+      <p className="mb-[18px] font-mono text-xs tracking-[0.1em] uppercase text-[#c9b3e6]">
+        Zo ziet één regel eruit
+      </p>
+
+      <div className="bg-white border-[1.5px] border-ink shadow-[8px_8px_0_rgba(20,10,35,0.35)] text-left">
+        <div className="flex items-center gap-2 px-4 py-3 border-b-[1.5px] border-ink">
+          <span className="w-[11px] h-[11px] border-[1.5px] border-ink rounded-full" />
+          <span className="w-[11px] h-[11px] border-[1.5px] border-ink rounded-full" />
+          <span className="w-[11px] h-[11px] border-[1.5px] border-ink rounded-full" />
+          <span className="ml-3.5 font-mono text-xs text-muted">{active.url}</span>
+        </div>
+
+        <div className="px-6 pt-[26px] pb-6">
+          <div className="flex justify-end mb-[18px]">
+            <div className="bg-tint border-[1.5px] border-ink px-4 py-3 text-[15px] leading-[1.45] max-w-[78%]">
+              {active.prompt}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 border-[1.5px] border-purple bg-yellow px-3.5 py-[11px] mb-[18px]">
+            <span className="font-mono text-[10px] font-semibold tracking-[0.08em] uppercase bg-ink text-yellow px-1.5 py-[3px]">
+              Ad
+            </span>
+            <span className="flex-1 text-sm font-medium leading-[1.35] text-ink">
+              Hier komt straks een echte adverteerder te staan.
+            </span>
+            <span className="text-base font-bold text-ink" aria-hidden="true">
+              ×
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2.5 font-mono text-[12.5px] text-muted">
+            <span className="inline-flex gap-1" aria-hidden="true">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple [animation:pk-dots_1.2s_infinite]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-purple [animation:pk-dots_1.2s_.2s_infinite]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-purple [animation:pk-dots_1.2s_.4s_infinite]" />
+            </span>
+            Antwoord wordt gegenereerd…
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-5 text-[15px] leading-[1.5] text-[#e6dcf5]">
+        Eén regel onder je bericht, met een kruisje om 'm te sluiten. Verdwijnt zodra het antwoord
+        er staat.
+      </p>
+
+      <div role="tablist" aria-label="Kies een platform" className="flex gap-2.5 mt-[22px]">
         {platformOrder.map((id) => {
           const p = platforms[id];
           const isActive = id === platform;
@@ -74,73 +93,16 @@ export const InteractiveSimulator: React.FC = () => {
               role="tab"
               aria-selected={isActive}
               onClick={() => setPlatform(id)}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B45309]/40 ${
+              className={`font-mono text-xs px-3 py-1.5 border-[1.5px] transition-colors focus:outline-none ${
                 isActive
-                  ? 'bg-white text-[#1C1917] shadow-sm'
-                  : 'text-[#78716C] hover:text-[#1C1917]'
+                  ? 'bg-white text-ink border-white'
+                  : 'text-white border-[#a882d9] hover:border-white'
               }`}
             >
-              <span
-                aria-hidden="true"
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: p.dot }}
-              />
               {p.label}
             </button>
           );
         })}
-      </div>
-
-      {/* Kaart — zelfde lichte kaartstijl als de rest van de pagina */}
-      <div className="bg-white border border-[#E7E1D8] rounded-2xl shadow-lg overflow-hidden text-left">
-        {/* Minimale titelbalk, geen stoplicht-bolletjes */}
-        <div className="px-4 py-2.5 bg-[#FAF8F5] border-b border-[#E7E1D8] flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="w-2 h-2 rounded-full"
-            style={{ backgroundColor: active.dot }}
-          />
-          <span className="font-mono text-xs text-[#78716C]">{active.url}</span>
-        </div>
-
-        <div className="p-4 sm:p-5 space-y-3">
-          {/* Eigen bericht */}
-          <div className="flex justify-end">
-            <div className="bg-[#F5F1EA] text-[#1C1917] px-4 py-2.5 rounded-2xl rounded-tr-sm max-w-[85%] text-sm">
-              {active.prompt}
-            </div>
-          </div>
-
-          {/* Het advertentiemoment — expliciet gelabeld als voorbeeld */}
-          <div className="flex items-start gap-2.5 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2.5">
-            <span className="w-5 h-5 rounded-md bg-gradient-to-br from-[#B45309] to-[#78350F] text-white flex items-center justify-center shrink-0">
-              <Coffee className="w-3 h-3" aria-hidden="true" />
-            </span>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-bold text-[#92400E] mb-0.5">Voorbeeldadvertenties</p>
-              <p className="text-xs text-[#78350F] truncate">
-                Zo ziet één regel eruit — hier komt straks een echte adverteerder te staan.
-              </p>
-            </div>
-            <button
-              type="button"
-              aria-label="Advertentie sluiten"
-              className="text-amber-700/60 hover:text-amber-900 rounded shrink-0 transition-colors"
-            >
-              <X className="w-3.5 h-3.5" aria-hidden="true" />
-            </button>
-          </div>
-
-          {/* Antwoord wordt gegenereerd */}
-          <div className="flex items-center gap-2.5 pt-0.5">
-            <span
-              aria-hidden="true"
-              className="w-2 h-2 rounded-full animate-pulse motion-reduce:animate-none"
-              style={{ backgroundColor: active.dot }}
-            />
-            <span className="text-xs font-medium text-[#78716C]">{active.thinking}…</span>
-          </div>
-        </div>
       </div>
     </div>
   );

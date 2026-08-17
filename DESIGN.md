@@ -2,249 +2,266 @@
 name: Promptkoffie
 description: Wachttijd tijdens AI-antwoorden verzilveren, warm en eerlijk, zonder mee te lezen.
 colors:
-  amber-ember: "#B45309"
-  amber-roast: "#78350F"
-  amber-hover: "#92400E"
-  ink: "#1C1917"
-  ink-hover: "#292524"
-  cream: "#FAF8F5"
-  border: "#E7E1D8"
-  text-secondary: "#57534E"
-  text-tertiary: "#78716C"
-  text-quaternary: "#A8A29E"
-  badge-bg: "#FEF3C7"
-  badge-border: "#FDE68A"
-  trust-emerald: "#059669"
-  trust-emerald-tint: "#D1FAE5"
-  warm-blush: "#F43F5E"
+  purple: "#663399"
+  ink: "#241a33"
+  tint: "#F0EAF7"
+  cream: "#F7F1E3"
+  yellow: "#FBBA00"
+  blue: "#0D8FDD"
+  green: "#009B62"
+  pink: "#E5205F"
+  body: "#4a3f57"
+  muted: "#6b5f78"
+  placeholder: "#9b8fa8"
+  hairline: "#dcd2ea"
+  footer-muted: "#c4b8d4"
 typography:
-  display:
-    fontFamily: "Instrument Serif, Georgia, serif"
-    fontSize: "clamp(2.25rem, 5vw, 3.75rem)"
+  hero:
+    fontFamily: "Space Grotesk, system-ui, sans-serif"
+    fontSize: "76px"
     fontWeight: 700
-    lineHeight: 1.12
-    letterSpacing: "normal"
-  headline:
-    fontFamily: "Instrument Serif, Georgia, serif"
-    fontSize: "clamp(1.875rem, 3.5vw, 2.25rem)"
+    lineHeight: 0.94
+    letterSpacing: "-0.035em"
+  pageTitle:
+    fontFamily: "Space Grotesk, system-ui, sans-serif"
+    fontSize: "60px"
     fontWeight: 700
-    lineHeight: 1.2
-  title:
-    fontFamily: "Instrument Serif, Georgia, serif"
-    fontSize: "1.25rem"
+    lineHeight: 0.98
+    letterSpacing: "-0.035em"
+  sectionHeading:
+    fontFamily: "Space Grotesk, system-ui, sans-serif"
+    fontSize: "40px–48px"
     fontWeight: 700
-    lineHeight: 1.3
+    lineHeight: "1.02–1.05"
+    letterSpacing: "-0.03em"
+  cardHeading:
+    fontFamily: "Space Grotesk, system-ui, sans-serif"
+    fontSize: "21px–23px"
+    fontWeight: 700
+    letterSpacing: "-0.02em"
   body:
-    fontFamily: "Plus Jakarta Sans, system-ui, -apple-system, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 500
-    lineHeight: 1.6
-  label:
-    fontFamily: "Plus Jakarta Sans, system-ui, -apple-system, sans-serif"
-    fontSize: "0.75rem"
-    fontWeight: 700
-    letterSpacing: "0.05em"
-rounded:
-  sm: "0.75rem"
-  md: "1rem"
-  lg: "1.5rem"
-  full: "9999px"
+    fontFamily: "Space Grotesk, system-ui, sans-serif"
+    fontSize: "15.5px–17px"
+    fontWeight: 400
+    lineHeight: 1.55
+  monoEyebrow:
+    fontFamily: "IBM Plex Mono, monospace"
+    fontSize: "12px"
+    fontWeight: 600
+    letterSpacing: "0.1em"
+    textTransform: "uppercase"
+rounded: none
 spacing:
-  section-y: "5rem"
-  section-y-sm: "4rem"
-  container-x: "1rem"
-  card-p: "2rem"
-  gap-md: "1.5rem"
+  section: "84px 72px"
+  section-split: "76px"
+  header: "20px 72px"
+  card-gap: "24px"
+  form-gap: "12px"
+  column-gap: "56px–72px"
+  canvas: "1440px"
 components:
   button-primary:
-    backgroundColor: "{colors.amber-ember}"
+    backgroundColor: "{colors.purple}"
     textColor: "#FFFFFF"
-    rounded: "{rounded.sm}"
-    padding: "0.875rem 1.5rem"
-  button-primary-hover:
-    backgroundColor: "{colors.amber-hover}"
-  button-dark:
-    backgroundColor: "{colors.ink}"
-    textColor: "#FFFFFF"
-    rounded: "{rounded.sm}"
-    padding: "0.5rem 1rem"
-  button-dark-hover:
-    backgroundColor: "{colors.ink-hover}"
-  badge-pill:
-    backgroundColor: "{colors.badge-bg}"
-    textColor: "{colors.amber-hover}"
-    rounded: "{rounded.full}"
-    padding: "0.25rem 0.75rem"
-  card-surface:
-    backgroundColor: "#FFFFFF"
-    rounded: "{rounded.md}"
-    padding: "{spacing.card-p}"
-  input-light:
-    backgroundColor: "#FFFFFF"
+    border: "1.5px solid {colors.ink}"
+    shadow: "3px 3px 0 {colors.ink}"
+    padding: "12px 22px"
+  button-cta:
+    backgroundColor: "{colors.yellow}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.sm}"
-    padding: "0.75rem 1rem"
-  input-dark:
-    backgroundColor: "#292524"
-    textColor: "#FFFFFF"
-    rounded: "{rounded.sm}"
-    padding: "0.75rem 1rem"
+    border: "1.5px solid {colors.ink}"
+    shadow: "3px 3px 0 {colors.ink}"
+    padding: "15px 22px"
+  card:
+    backgroundColor: "#FFFFFF"
+    border: "1.5px solid {colors.ink}"
+    shadow: "5px 5px 0 <accent>"
+    padding: "32px 28px 28px"
+  panel:
+    backgroundColor: "{colors.cream} or {colors.blue}"
+    border: "1.5px solid {colors.ink}"
+    shadow: "6px 6px 0 {colors.ink} (or rgba(20,10,35,.35) on purple)"
+  badge-mono:
+    border: "1.5px solid <accent>"
+    textColor: "<accent>"
+    fontFamily: "IBM Plex Mono"
+    fontSize: "12px"
+    padding: "7px 12px"
   filter-chip-active:
-    backgroundColor: "{colors.ink}"
+    backgroundColor: "{colors.purple}"
     textColor: "#FFFFFF"
-    rounded: "{rounded.full}"
-    padding: "0.375rem 0.875rem"
+    border: "1.5px solid {colors.ink}"
+    padding: "8px 14px"
   filter-chip-inactive:
     backgroundColor: "#FFFFFF"
-    textColor: "{colors.text-secondary}"
-    rounded: "{rounded.full}"
-    padding: "0.375rem 0.875rem"
+    textColor: "{colors.ink}"
+    border: "1.5px solid {colors.ink}"
+    padding: "8px 14px"
+  input:
+    backgroundColor: "#FFFFFF"
+    textColor: "{colors.ink}"
+    border: "1.5px solid {colors.ink}"
+    padding: "15px 18px"
 ---
 
 # Design System: Promptkoffie
 
 ## Overview
 
-**Creative North Star: "De Stille Kassa" (The Quiet Cash Register)**
+**Creative North Star: "Het Eerlijke Bonnetje" (The Honest Receipt)**
 
-Promptkoffie's visual system is an honest, transparent value-exchange made tangible: a wachtmoment tijdens een AI-antwoord wordt omgezet in een klein, eerlijk bedrag, zonder opzichtige game- of casino-mechaniek eromheen. De uitvoering is **speels, verrassend en vrolijk** in stem en copy (☕-emoji, warme micro-teksten, een levende demo-simulator), terwijl de onderliggende componenten — knoppen, kaarten, velden — bewust **zacht en geruststellend** blijven: grote radii, gedempte randen, ambient gloed in plaats van harde schaduwen. Die combinatie is doelbewust: het geld-verdienen mag leuk voelen, maar de interface zelf mag nooit opdringerig, schreeuwerig of "growth-hacky" aanvoelen — dat zou de privacy- en eerlijkheidsbelofte tegenspreken.
+Het redesign vervangt de vorige zachte, groen-op-crème "Stille Kassa"-taal door een
+strak, hoekig systeem met paars als huiskleur: dikke inkt-randen, harde offset-schaduwen
+(nooit blur), geen enkele border-radius (op statusstippen na), en Space Grotesk + IBM
+Plex Mono in plaats van een serif/sans-combinatie. Het idee blijft hetzelfde — eerlijk,
+transparant, zonder growth-hacky opsmuk — maar de uitvoering is nu een bewust
+"gedrukt bonnetje/formulier"-esthetiek in plaats van een zachte SaaS-kaart-esthetiek.
 
-De kleurwereld is bijna volledig Tailwind's eigen amber- en stone-schalen (geen custom hue-systeem), met twee bewust "verwarmde" uitzonderingen (achtergrond en randen) die de standaard koelere stone-tinten net iets tanniger maken. Emerald is strikt gereserveerd voor privacy/vertrouwen-signalen; rose komt maar op twee plekken voor (footer-hartje, foutmeldingen). Er is precies één visuele uitzondering op het hele systeem: de `InteractiveSimulator`, die doelbewust de échte interfacekleuren van ChatGPT/Gemini/Claude nabootst voor herkenbaarheid — dat is geen merkuiting en mag niet naar het amber-palet worden "gecorrigeerd".
+Dit systeem is opgebouwd uit een handoff (`design_handoff_promptkoffie_redesign/README.md`)
+met exacte, definitieve tokens — kleuren, typografie, spacing en randen liggen vast en zijn
+hieronder overgenomen. Wie een nieuwe sectie bouwt, leunt op deze tokens, niet op eigen
+smaak.
 
 **Key Characteristics:**
-- Amber-op-crème als enige merkkleur, nooit paars/blauw SaaS-gradients.
-- Warme stone-neutralen voor tekst, nooit koele Tailwind grays.
-- Grote, zachte radii overal (rounded-xl minimum).
-- Ambient amber-gloed (blur-3xl) i.p.v. harde schaduwen als sfeermaker.
-- Instrument Serif voor koppen, Plus Jakarta Sans voor de rest — geen Inter, geen systeemfont.
+- Paars (#663399) op crème (#F7F1E3) als huiskleur — geen gradients, nergens.
+- Alles hoekig: `border-radius: 0` overal, behalve status-stippen (`rounded-full`).
+- Randen zijn altijd 1.5px solid inkt (#241a33), nooit een lichte neutraal-tint.
+- Schaduwen zijn altijd harde offsets (`Npx Npx 0 <kleur>`), nooit blur.
+- Space Grotesk voor koppen én body, IBM Plex Mono voor labels/eyebrows/mono-cijfers.
+- Elke sectie heeft een eigen volle achtergrondkleur (paars/groen/blauw/tint/crème) —
+  geen ambient gloed-vlekken, geen subtiele tinten.
 
 ## Colors
 
-Het palet is warm, geconcentreerd en bijna uitsluitend amber + stone; emerald en rose zijn strikt semantisch, geen decoratie.
+| Token | Hex | Gebruik |
+|---|---|---|
+| Purple | `#663399` | huiskleur — koppen-accent, primaire knoppen, hero-rechterkolom, wachtlijst-sectie |
+| Ink | `#241a33` | alle randen (1.5px), primaire tekst, footer-achtergrond, offset-schaduwen |
+| Tint | `#F0EAF7` | secundaire sectie-achtergrond (Voortgang, rechterhelft Grenzen) |
+| Cream | `#F7F1E3` | pagina-basis-achtergrond |
+| Yellow | `#FBBA00` | primaire CTA-vulling, "Nu bezig"/"In aanbouw"-badge, ad-regel in de chatmock |
+| Blue | `#0D8FDD` | adverteerders-sectie en -formulier |
+| Green | `#009B62` | privacy-sectie, positieve micro-labels ("+"-items, "Nu bezig"-groen) |
+| Pink | `#E5205F` | grenzen/"wat ik nooit accepteer", linkkleur bij hover |
+| Body | `#4a3f57` | lopende tekst |
+| Muted | `#6b5f78` | metadata, mono-regels |
+| Placeholder | `#9b8fa8` | inputvelden |
+| Hairline | `#dcd2ea` | binnenlijnen in lijsten/kaarten |
+| Footer muted | `#c4b8d4` | tekst op `#241a33` |
 
-### Primary
-- **Geroosterde Kaneel Amber** (#B45309): hoofdaccent — primaire knoppen, iconen, badge-tekst, links bij hover. Gebruikt op ≤10% van elk scherm.
-- **Amber Roast** (#78350F): donkere gradiëntpartner van Geroosterde Kaneel Amber — logo-badge, geselecteerde iconenblokken (`bg-gradient-to-br from-[#B45309] to-[#78350F]`).
-- **Amber Hover** (#92400E): drukstand/hover van de primaire kleur, en de tekstkleur binnen amber-badges.
-
-### Secondary
-- **Privacy Emerald** (#059669): uitsluitend voor vertrouwen/privacy-signalen — AVG/GDPR-badges, checkmarks, "Privacy First"-badge. Nooit voor algemeen succes of decoratie.
-
-### Tertiary
-- **Warme Blos** (#F43F5E): incidenteel warm accent — het hartje in de footer-credit, en de basis voor foutmeldingsstaten (rose-50/200/800). Bewust schaars gebruikt.
-
-### Neutral
-- **Crème** (#FAF8F5): paginabasis-achtergrond — een verwarmde variant van Tailwind stone-50, niet de standaardwaarde.
-- **Inkt** (#1C1917): primaire tekstkleur én de achtergrond van donkere secties (AdvertiserCTA, InteractiveSimulator-frame). Exact Tailwind stone-900.
-- **Inkt Hover** (#292524): hoverstand van donkere knoppen (header-CTA). Exact Tailwind stone-800.
-- **Rand** (#E7E1D8): dividers en kaartranden overal — een verwarmde variant van Tailwind stone-200, niet de standaardwaarde. Vaak met `/40`–`/80`-opacity.
-- **Tekst Secundair** (#57534E): lichaamstekst, beschrijvingen. Exact Tailwind stone-600.
-- **Tekst Tertiair** (#78716C): minder prominente tekst, footer-body. Exact Tailwind stone-500.
-- **Tekst Quaternair** (#A8A29E): meest gedempte tekst — copyright-regel, cijfers-achtergrond in stapkaarten. Exact Tailwind stone-400.
-- **Badge Achtergrond** (#FEF3C7) / **Badge Rand** (#FDE68A): tekstselectie-highlight en incidentele accentdecoratie (underline onder "AI" in de hero-titel). Exact Tailwind amber-100/200. *Voert sinds de kicker-verwijdering (zie Do's en Don'ts) geen pil-badges meer aan.*
+Link-kleuren: default `#663399`, hover `#E5205F`, 150ms transition.
 
 ### Named Rules
-**De Warme-Neutraal Regel.** Tekst- en oppervlakte-neutralen zijn altijd warm stone-getint (#57534E/#78716C/#A8A29E/#E7E1D8), nooit koel grijs — koel grijs leest als generieke SaaS, warm stone leest als koffiezaak.
+**De Geen-Gradient Regel.** Nergens een gradient — elke sectie is een vol, plat vlak in
+precies één van bovenstaande kleuren.
 
-**De Amber-Gradiënt Regel.** De #B45309→#78350F-gradiënt is gereserveerd voor enkelvoudige merkankers (logo, hero-icoon), niet om over elk icoontje te plakken.
-
-**De Third-Party-Uitzondering.** `InteractiveSimulator.tsx`'s interne chat-UI-kleuren (o.a. #10A37F, #1A73E8, #DA7756, #202123) bootsen bewust ChatGPT/Gemini/Claude na en vallen buiten dit designsysteem — nooit naar het amber-palet omzetten. Deze uitzondering strekt zich ook uit tot de micro-typografie binnen die platform-mimicry-blokken (bijv. de 9-11px badge- en statustekst in de ChatGPT-sidebar, Gemini's "Google Workspace gekoppeld"-badge, Claude's "Anthropic"-tag): die maten volgen de échte interface-proporties van het nagebootste platform, niet dit systeem se type-ramp. Promptkoffie's éígen UI binnen dezelfde mockup (de koffiesaldo-badge, de browser-URL-balk, en de geïnjecteerde advertentiebalk) valt hier nadrukkelijk buiten en moet wél de normale type-ramp volgen.
+**De Ink-Rand Regel.** Elke rand in het systeem is 1.5px solid `#241a33` (2px op
+tijdlijn-stippen). Geen lichte neutraal-randen zoals in het vorige systeem.
 
 ## Typography
 
-**Display Font:** Instrument Serif (met Georgia, serif als fallback)
-**Body Font:** Plus Jakarta Sans (met system-ui, -apple-system, sans-serif als fallback)
-
-**Character:** Een klassiek, iets literair serif voor koppen tegenover een moderne, vriendelijke geometrische sans voor de rest — het serif-accent geeft "vertrouwd/eerlijk" gewicht aan koppen zonder formeel te worden, terwijl de sans de speelse, snelle leesbaarheid van copy en interface draagt.
+**Display/UI:** Space Grotesk (400/500/700) — koppen én body, geen apart serif-font meer.
+**Mono/labels:** IBM Plex Mono (400/500/600) — eyebrows, badges, formulier-placeholders,
+mono-cijfers (stats, bonregels).
 
 ### Hierarchy
-- **Display** (700, clamp(2.25rem–3.75rem), 1.12): hero-titel (`Hero.tsx` h1) — enige plek met de grootste schaal.
-- **Headline** (700, clamp(1.875rem–2.25rem), 1.2): sectiekoppen (H2) — "Hoe het werkt", "Jouw prompts blijven privé", etc.
-- **Title** (700, 1.25rem, 1.3): kaarttitels (H3) — stapkaarten, FAQ-vragen (font-serif, iets kleiner op mobiele kaarten).
-- **Body** (500, 1rem, 1.6): standaard lichaamstekst; leads gaan naar `text-lg` op grotere viewports.
-- **Label** (700, 0.75rem, uppercase, tracking 0.05em): formulierlabels, badges, footer-kopjes — altijd uppercase + letterspacing, nooit voor lopende tekst.
+- **Hero h1** (home): 76px / 0.94 / -0.035em, 700.
+- **Pagina-h1** (subpagina, in-aanbouw): 60–62px / 0.98 / -0.035em, 700.
+- **Sectie-h2**: 40–48px / 1.02–1.05 / -0.03em, 700.
+- **Kaart-h3**: 21–23px / -0.02em, 700.
+- **Hero-lead**: 20px / 1.5.
+- **Body**: 15.5–17px / 1.55.
+- **Stat-cijfer**: 34–38px / -0.03em, 700, paars.
+- **Mono-eyebrow**: 12px / letter-spacing 0.1em / uppercase, 600.
+- **Mono-badge**: 10.5px / 0.1em / uppercase, 600.
 
 ### Named Rules
-**De Eén-Serif-Regel.** Instrument Serif verschijnt uitsluitend op koppen (`.font-serif`/h1-h3); lichaamstekst, labels en UI-copy blijven altijd Plus Jakarta Sans — nooit serif voor interface-elementen.
-
-## Layout
-
-Content houdt zich aan een herhaald containerpatroon: `max-w-7xl` voor volle secties, `max-w-4xl` voor smallere content (FAQ), `max-w-2xl` voor sectie-intro's — steeds met `px-4 sm:px-6 lg:px-8`. Verticaal sectieritme is `py-20` als standaard (`py-16` als lichtere variant), met dunne `border-[#E7E1D8]`-dividers (`/60`–`/80` opacity) tussen secties in plaats van harde scheidingslijnen.
-
-Grids zijn functioneel, niet decoratief: een 12-koloms grid (`lg:grid-cols-12`) verdeelt tekst/formulier-paren asymmetrisch (5/7 of 6/6), een simpele 3-koloms grid draagt de stappenkaarten. Alles valt terug naar één kolom op mobiel. Twee doelgroep-secties (consument vs. adverteerder) leven naast elkaar op dezelfde pagina met duidelijk verschillend kleurgebruik (licht/crème vs. donker/inkt) om ze visueel te scheiden zonder aparte pagina's.
-
-## Elevation & Depth
-
-Zacht, ambient en gelaagd — nooit hard of skeuomorf. Twee technieken dragen samen het dieptegevoel: (1) blur-gloeivlekken (`blur-3xl`, amber op 10–15% opacity) achter hero- en CTA-secties als sfeermaker, geen letterlijke schaduw; (2) gewone Tailwind shadow-utilities (`shadow-xs` t/m `shadow-2xl`) op kaarten en knoppen, altijd diffuus. Gekleurde schaduwen (`shadow-[#B45309]/20`) komen terug op merkankers zoals het logo-icoon en primaire knoppen — een subtiele signature-techniek die schaduw aan merkkleur koppelt in plaats van aan generiek zwart.
-
-### Shadow Vocabulary
-- **Ambient card** (`shadow-lg`/`shadow-xl`/`shadow-2xl`): kaarten en formulierboxen, oplopend met visueel gewicht van de sectie.
-- **Brand glow** (`shadow-md shadow-[#B45309]/20`): logo-badge en primaire CTA's — schaduw in merkkleur, niet zwart.
-- **Micro** (`shadow-xs`/`shadow-sm`): kleine badges en de header-CTA.
-
-### Named Rules
-**De Geen-Harde-Schaduw Regel.** Geen enkele schaduw in dit systeem is scherp of zwart-op-wit hard; alles is diffuus en ofwel neutraal ofwel in merkkleur getint.
+**Geen Kicker boven een kop, wél mono-eyebrows.** Waar het vorige systeem alle pil-badges
+boven koppen verbood, gebruikt dit systeem bewust mono-uppercase eyebrows (géén pil, géén
+radius) boven secties als "Live status", "Wat je krijgt", "Voor adverteerders" — dat is
+geen kicker-badge maar een tekstlabel, consistent met de mono-taal van het hele systeem.
 
 ## Shapes
 
-Grote, zachte radii zijn de constante: `rounded-xl` (12px) is het minimum voor elk interactief element (inputs, kleine knoppen, icoontegels), oplopend naar `rounded-2xl` (16px) voor kaarten en chatbubbels, en `rounded-3xl` (24px) voor hero-niveau containers (privacy-kaart, formulierboxen). Pillen en cirkelvormige elementen gebruiken `rounded-full`. Randen zijn overal dun (1px), in de rand-neutraal-kleur op lichte secties of stone-700/800 op de donkere AdvertiserCTA-sectie — grens + zachte schaduw samen, nooit schaduw alleen.
+**Geen border-radius**, nergens — het enige ronde element is een statusstip (`rounded-full`,
+6–28px). Dit is een harde omkering van het vorige "grote zachte radii"-principe.
+
+**Randen:** `1.5px solid #241a33` standaard, `2px` op tijdlijn-cirkels.
+
+**Schaduwen — altijd harde offsets, nooit blur:**
+- knoppen: `3px 3px 0 #241a33`
+- kaarten: `5px 5px 0 <sectie-accent>` (bv. paars op HowItWorks-kaarten)
+- grote panelen: `6px 6px 0 #241a33`, of `6px 6px 0 rgba(20,10,35,.35)` / `8px 8px 0 rgba(20,10,35,.35)` op een paarse achtergrond
+
+### Named Rules
+**De Geen-Blur Regel.** Geen enkele schaduw in dit systeem heeft blur — alles is een
+scherpe, getelde pixel-offset. Dit is het tegenovergestelde van het vorige "ambient
+glow"-principe en mag niet terugsluipen.
+
+## Layout
+
+Canvas-referentie 1440px. Sectie-padding `84px 72px` (hero en 2-koloms secties `76px`),
+header-padding `20px 72px`. Grid-gaps: kaarten `24px`, formuliervelden `12px`, kolommen in
+split-secties `56–72px`.
+
+Herhaald patroon: een sectie is óf een volle achtergrondkleur met binnen-grid, óf een
+2-koloms grid met een verticale `1.5px`-scheidingslijn ertussen (Hero, Grenzen). Op
+`min-[1100px]` stapelt elke 2-koloms sectie naar één kolom — dezelfde breakpoint-logica
+overal (Hero, Grenzen, PrivacyTrust, Wachtlijst, Adverteerders-teaser).
 
 ## Components
 
 ### Buttons
-- **Shape:** `rounded-xl` (12px), consistent op elke knopvariant.
-- **Primary:** amber-achtergrond (#B45309), witte bold tekst, `py-3/3.5 px-5/6`, hover naar #92400E, vaak met trailing pijl-icoon dat bij hover opschuift.
-- **Dark variant:** inkt-achtergrond (#1C1917) i.p.v. amber, gebruikt in de header-CTA en de Hero-microform — hover naar #292524. Deze variant bestaat naast de amber-variant; welke van de twee gekozen wordt hangt af van de visuele lading van de sectie eromheen.
-- **Loading state:** icoon vervangen door een spinnende `Loader2`, geen tekstverandering.
+- **Shape:** vierkant (`rounded-none`), 1.5px ink-rand, harde offset-schaduw.
+- **Primary (paars):** header-CTA, "Schrijf je in voor updates".
+- **CTA (geel):** formulier-submit-knoppen (wachtlijst, adverteerders-kit).
+- **Hover:** knop schuift 1px richting de schaduw en de offset verkleint naar `2px 2px`
+  (indruk-effect), 150ms — nooit een kleurverandering alleen.
 
-### Filter Chips
-- **Style:** `rounded-full` knoppen, actief `bg-[#1C1917] text-white`, inactief wit met rand-neutraal — functionele controls die content sturen (FAQ-categorieën), geen decoratieve kicker-badges. Zie de Kicker-Regel in Do's en Don'ts: dit is het enige toegestane pil-vormige element boven content, omdat het interactief is in plaats van een label.
+### Filter Chips (FAQ)
+- Vierkant, 1.5px ink-rand. Actief: paarse vulling + witte tekst. Inactief: wit met
+  ink-rand. Functionele content-filters, geen decoratie.
 
-### Cards / Containers
-- **Corner Style:** `rounded-2xl` (secties/stappen) tot `rounded-3xl` (hero-niveau containers).
-- **Background:** wit of crème op lichte secties; stone-900 op de donkere adverteerders-sectie.
-- **Shadow Strategy:** zie Elevation & Depth — ambient card-schaduw, soms merkkleur-getint.
-- **Border:** altijd aanwezig, dun, rand-neutraal (of stone-700/800 op donker).
-- **Internal Padding:** `p-6` tot `p-8` (stapkaarten), `p-8`–`p-12` (hero-niveau containers).
-
-### Inputs / Fields
-Twee bewust verschillende stijlen naast elkaar, per context:
-- **Licht formulier (consument — Hero, UserSignupCTA):** géén individuele veldrand; het hele formulier zit in één witte, `rounded-2xl` container met rand, en het invoerveld zelf is randloos/transparant daarbinnen.
-- **Donker formulier (adverteerder — AdvertiserCTA):** elk veld heeft wél een eigen rand en achtergrond (`bg-stone-800 border-stone-700 rounded-xl text-white`), los van elkaar gestapeld met `space-y-4`.
-- **Focus:** amber-randkleur (`focus:border-amber-500` of `focus:ring-amber-500/30`) op beide varianten — de enige plek waar focus-styling verschijnt.
-
-### Navigation
-- Vaste header, transparant tot scroll (>20px), dan crème-achtergrond met blur en dunne onderrand. Logo = amber-gradiënt icoontegel + wordmerk in serif. Eén CTA-knop rechts, geen uitgebreid navigatiemenu.
-- **Footer:** donker (inkt-achtergrond), niet crème — vormt samen met `AdvertiserCTA` een licht/donker-ritme dat de pagina afsluit (AdvertiserCTA donker → FAQ licht → Footer donker).
-
-### Step Rail (HowItWorks)
-Vervangt losse iconkaarten: een dunne horizontale lijn draagt drie stap-markers (rond, `rounded-2xl`), tekst ernaast zonder kaartomlijning. Alleen de laatste/belangrijkste stap krijgt de grotere amber-gradiënt marker; de eerdere stappen blijven kleiner en neutraal — hiërarchie door grootte, niet door herhaling.
-
-### Checklist (PrivacyTrust)
-Vervangt een 3-koloms iconkaart-grid: verticale rijen gescheiden door dunne dividers (`divide-y`), klein icoonblokje + titel + beschrijving per rij, geen individuele kaartomlijning per punt. Voorkomt kaart-in-kaart binnen de buitenste containerkaart.
+### Chatmock (InteractiveSimulator)
+Signature-component in de hero-rechterkolom: een witte kaart met browserbalk (drie lege
+cirkels + url, geen platform-kleurstip meer), een rechts uitgelijnd berichtbubbel op
+`#F0EAF7`, de ad-regel (gele vulling, paarse rand, donker "AD"-labeltje), en drie
+pulserende stippen (`pk-dots`-keyframe, 1.2s, 0.2s-stagger) bij "Antwoord wordt
+gegenereerd…". Mono-chips (ChatGPT/Claude/Gemini) eronder zijn een echte tab-switch die
+prompt en url laten wisselen.
 
 ### Receipt (UserSignupCTA)
-Signature-component voor de "Stille Kassa"-metafoor: een kaart met een gekartelde onderrand (`.receipt-edge` CSS-mask in `index.css`) en "bonregels" — `flex justify-between`-rijen met stippellijn tussen omschrijving en waarde, `font-mono tabular-nums` voor de waarden (gerechtvaardigd: dit zijn echte metingen/bedragen, geen kostuum), eindigend in een vetgedrukte totaalregel. Vervangt de oude combinatie van kicker-badge + platte bullet-lijst.
+Cream paneel met `6px 6px 0 rgba(20,10,35,.35)`-schaduw op de paarse wachtlijst-sectie:
+`flex justify-between`-bonregels met een vetgedrukte totaalregel (`€ 0,00 · vrijblijvend`).
+Geen gekartelde rand meer (`.receipt-edge`-mask is uit het systeem) — de eerlijkheid zit nu
+in de rechte, formele bonnetje-typografie zelf.
 
-### Signature Component: InteractiveSimulator
-Een browsermockup met platform-tabs (ChatGPT/Gemini/Claude, plus een niet-klikbare "Perplexity — binnenkort"-chip) die authentiek de kleuren en typografie van elk platform nabootst. De geïnjecteerde Promptkoffie-advertentie staat in de lege ruimte **onder het eigen bericht van de gebruiker** (niet boven de invoerbalk — dit is bewust gewijzigd om aan te sluiten bij hoe een vergelijkbare, echte extensie dit in de praktijk plaatst), klein en met een hover-dismiss "×". Het inschrijfformulier staat **los** eronder in `Hero.tsx` (niet in dit component ingebouwd — dat leidde tot te weinig visuele nadruk voor de CTA en is teruggedraaid), gestyled met een dikke amber-rand zodat het duidelijk opvalt naast het donkere browsermockup. Dit is het enige component waar het amber-palet bewust *niet* geldt voor de platform-mimicry-binnenkant — zie de Third-Party-Uitzondering hierboven.
+### Horizontale tijdlijn (JourneyProgress)
+Eén doorlopende `2px`-lijn op `top:13px` draagt vier `28px`-cirkels (2px ink-rand). Status
+via cirkelkleur + mono-badge: geel-gevuld + "Nu bezig" (ink-bg/gele tekst), leeg + "Volgt"
+(grijze rand), groen-gevuld + "Klaar" (afgeronde fases), groene rand + "Doel" (laatste
+fase, nog niet bereikt).
 
-### USP-signalering (50/50-split)
-Geen apart beeldmerk — na een paar mislukte pogingen (kleine badge, munt-icoon) is besloten de 50/50-split uitsluitend via tekst en een `Euro`-icoon (lucide-react) te communiceren: expliciet genoemd in de beschrijving van `HowItWorks.tsx` stap 3 ("Je ontvangt 50% van elke advertentie-opbrengst terug"), met het Euro-icoon in de bestaande amber-gradiënt accent-marker van die stap, en in het FAQ-antwoord over verdiensten. Geen aparte badge meer in `Header.tsx` of `Hero.tsx`.
+### Grenzen (Boundaries)
+2-koloms grens-sectie: links "Wat je krijgt" (crème, groene `+`-items met randlijnen),
+rechts "Wat ik nooit accepteer" (`#F0EAF7`, roze randen, 2×2-grid met categorieën). Geen
+Check/X-iconen meer — puur typografisch (`+`-teken, geen icoon).
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** gebruik de amber-gradiënt (#B45309→#78350F) uitsluitend voor enkelvoudige merkankers — logo, hero-icoon, niet gedecoreerd over elk icoontje.
-- **Do** gebruik warme stone-neutralen (#57534E/#78716C/#A8A29E) voor alle secundaire tekst — nooit `text-gray-*`.
-- **Do** houd radii groot en zacht (`rounded-xl` als absoluut minimum) — geen scherpe hoeken.
-- **Do** houd ambient gloed-vlekken in amber — nooit in een andere kleurtoon.
-- **Do** reserveer emerald uitsluitend voor privacy/vertrouwen-signalen.
-- **Do** geef elke sectie haar eigen structurele taal (rail, checklist, receipt, typografische lijst) in plaats van dezelfde iconkaart overal te herhalen — variatie zit in de compositie, niet alleen in kleur.
+- **Do** houd elke rand 1.5px solid ink — geen lichte neutraal-tinten, geen dunnere randen.
+- **Do** gebruik alleen harde offset-schaduwen, nooit blur.
+- **Do** geef elke sectie een eigen volle achtergrondkleur uit de tokenlijst.
+- **Do** gebruik mono (IBM Plex Mono) voor elk label, elke eyebrow, elk cijfer dat een
+  meting/bedrag is — Space Grotesk blijft voor koppen en lopende tekst.
+- **Do** stapel 2-koloms secties naar 1 kolom onder `1100px` — consistent over de site.
 
 ### Don't:
-- **De Kicker-Regel (harde ban, geen uitzondering).** **Don't** plaats een pil-badge/kicker/eyebrow boven een koptekst — de kop draagt zijn eigen gewicht. Dit patroon is site-breed verwijderd (Hero, HowItWorks, PrivacyTrust, UserSignupCTA, AdvertiserCTA, FAQ); een nieuwe sectie mag dit niet opnieuw introduceren, ook niet "net dit ene keertje". De enige uitzondering: functionele filterchips die content sturen (zie Filter Chips) — die zijn geen kicker omdat ze interactief zijn, niet decoratief.
-- **Don't** herkleur `InteractiveSimulator`'s platform-mockups naar het amber-palet — hun ChatGPT/Gemini/Claude-kleuren zijn een bewuste uitzondering.
-- **Don't** voeg een paars/blauw generiek SaaS-gradiënt toe — de amber/koffie-identiteit is het hele punt.
-- **Don't** nest kaarten in kaarten — de vroegere `PrivacyTrust.tsx`-uitzondering is inmiddels zelf opgelost (verticale checklist i.p.v. geneste mini-kaarten); er is nu geen actieve uitzondering meer.
-- **Don't** gebruik een unicode-emoji als icoon (het ☕-teken is overal vervangen door de lucide `Coffee`-component — Header, Footer, InteractiveSimulator's ad-badges). Icons komen altijd uit lucide-react, nooit uit tekst-glyphs.
+- **Don't** voeg border-radius toe aan interactieve elementen — het enige ronde is een
+  statusstip.
+- **Don't** gebruik een gradient of ambient blur-gloed — elke sectie is een plat vlak.
+- **Don't** herintroduceer Instrument Serif of Plus Jakarta Sans — dat is het vorige
+  systeem en botst met de mono/display-combinatie.
+- **Don't** plaats een pil-vormige kicker-badge boven een kop — gebruik een mono-uppercase
+  eyebrow zonder rand/vulling, of een badge met vierkante rand zoals "In aanbouw".

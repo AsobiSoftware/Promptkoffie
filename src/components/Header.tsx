@@ -1,71 +1,149 @@
-import React from 'react';
-import { Coffee, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { handleSectionLinkClick } from '../utils/scroll';
 
 /**
- * Sticky header, volledig statisch.
+ * Sticky header, verder statisch — de enige JS is het anker-klikgedrag
+ * hieronder, dat voorkomt dat de URL verandert bij in-page navigatie.
  *
- * Bewuste afwijking van DESIGN.md: de oude header was transparant tot 20px
- * scroll en wisselde daarna naar crème + blur. Dat vroeg een scroll-listener
- * in JS. De header staat nu permanent op crème met blur — visueel vrijwel
- * identiek zodra je scrollt, en nul JS.
- *
- * Navigatie is verborgen onder md. Drie ankerlinks rechtvaardigen geen
- * hamburgermenu; de CTA blijft op elke breedte zichtbaar.
+ * Volgorde van de sectielinks volgt de daadwerkelijke volgorde van de
+ * secties op de pagina (Voortgang → Privacy) — niet alfabetisch of
+ * willekeurig. Bewust kort gehouden: alleen Voortgang en Privacy, plus de
+ * losse pagina's.
  */
 
-const navLinks = [
-  { href: '#zo-ziet-het-eruit', label: 'Zo ziet het eruit' },
-  { href: '#hoe-werkt-het', label: 'Hoe het werkt' },
-  { href: '#privacy', label: 'Privacy' },
+interface HeaderProps {
+  /** false op /over-ons en /adverteerders — bepaalt hoe anker-links zich gedragen. */
+  isHomePage?: boolean;
+  /** Welke pagina-link actief is (en in welke kleur) op een losse pagina. */
+  activePage?: 'over-ons' | 'adverteerders';
+}
+
+const sectionLinks = [
+  { id: 'voortgang', label: 'Voortgang' },
+  { id: 'privacy', label: 'Privacy' },
 ];
 
-export const Header: React.FC = () => {
-  return (
-    <header className="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#E7E1D8]/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4 py-3.5">
-          {/* Logo */}
-          <a
-            href="#top"
-            className="flex items-center gap-2.5 group rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B45309]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF8F5]"
-          >
-            <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#B45309] to-[#78350F] flex items-center justify-center text-white shadow-md shadow-[#B45309]/20 transition-transform group-hover:scale-105 motion-reduce:transition-none">
-              <Coffee className="w-5 h-5" aria-hidden="true" />
-            </span>
-            <span className="text-xl font-bold tracking-tight text-[#1C1917] leading-none font-serif">
-              Promptkoffie
-            </span>
-          </a>
+const pageLinks = [
+  { key: 'over-ons', href: '/over-ons/', label: 'Over ons', accent: 'text-purple' },
+  { key: 'adverteerders', href: '/adverteerders/', label: 'Adverteerders', accent: 'text-blue' },
+] as const;
 
-          {/* Navigatie */}
-          <nav aria-label="Hoofdnavigatie" className="hidden md:block">
-            <ul className="flex items-center gap-7">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+export const Header: React.FC<HeaderProps> = ({ isHomePage = true, activePage }) => {
+  const [open, setOpen] = useState(false);
+  const sectionHref = (id: string) => (isHomePage ? `#${id}` : `/#${id}`);
+
+  const handleMobileSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    setOpen(false);
+    if (isHomePage) handleSectionLinkClick(e, id);
+  };
+
+  return (
+    <header className="sticky top-0 z-50 bg-cream border-b-[1.5px] border-ink">
+      <div className="flex items-center justify-between gap-6 px-6 sm:px-[72px] py-4 sm:py-5">
+        <a
+          href={isHomePage ? '#top' : '/'}
+          onClick={isHomePage ? (e) => handleSectionLinkClick(e, 'top') : undefined}
+          className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/40"
+        >
+          <img src="/promptkoffie-logo.png" alt="Promptkoffie" className="block h-8 sm:h-[38px] w-auto" />
+        </a>
+
+        <nav aria-label="Hoofdnavigatie" className="hidden lg:block">
+          <ul className="flex items-center gap-[26px] text-[15px] font-medium">
+            {sectionLinks.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={sectionHref(link.id)}
+                  onClick={isHomePage ? (e) => handleSectionLinkClick(e, link.id) : undefined}
+                  className="text-ink hover:text-pink transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li aria-hidden="true" className="w-px h-4 bg-[#c9bed6]" />
+            {pageLinks.map((link) => {
+              const isActive = activePage === link.key;
+              return (
+                <li key={link.key}>
                   <a
                     href={link.href}
-                    className="text-sm font-medium text-[#57534E] hover:text-[#B45309] transition-colors rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B45309]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF8F5]"
+                    className={
+                      isActive
+                        ? `${link.accent} font-bold`
+                        : 'text-ink hover:text-pink transition-colors'
+                    }
                   >
                     {link.label}
                   </a>
                 </li>
-              ))}
-            </ul>
-          </nav>
+              );
+            })}
+          </ul>
+        </nav>
 
-          {/* CTA */}
-          <a
-            href="#inschrijven"
-            className="group inline-flex items-center gap-2 bg-[#1C1917] hover:bg-[#292524] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B45309]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF8F5]"
-          >
-            <span>Op de wachtlijst</span>
-            <ArrowRight
-              className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none"
-              aria-hidden="true"
-            />
-          </a>
-        </div>
+        <a
+          href={sectionHref('wachtlijst')}
+          onClick={isHomePage ? (e) => handleSectionLinkClick(e, 'wachtlijst') : undefined}
+          className="shrink-0 inline-flex items-center gap-2 bg-purple text-white text-[15px] font-bold px-[18px] sm:px-[22px] py-[10px] sm:py-3 border-[1.5px] border-ink shadow-[3px_3px_0_#241a33] hover:translate-x-px hover:translate-y-px hover:shadow-[2px_2px_0_#241a33] transition-[transform,box-shadow] duration-150"
+        >
+          <span>Op de wachtlijst</span>
+          {!isHomePage && <span aria-hidden="true">→</span>}
+        </a>
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+          className="shrink-0 lg:hidden inline-flex items-center justify-center w-10 h-10 border-[1.5px] border-ink bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/40"
+        >
+          {open ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
+        </button>
       </div>
+
+      {open && (
+        <nav
+          id="mobile-nav"
+          aria-label="Mobiele navigatie"
+          className="lg:hidden border-t-[1.5px] border-ink bg-cream px-6 py-4"
+        >
+          <ul className="flex flex-col gap-4 text-[15px] font-medium">
+            {sectionLinks.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={sectionHref(link.id)}
+                  onClick={(e) => handleMobileSectionClick(e, link.id)}
+                  className="text-ink hover:text-pink transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li aria-hidden="true" className="h-px bg-[#c9bed6]" />
+            {pageLinks.map((link) => {
+              const isActive = activePage === link.key;
+              return (
+                <li key={link.key}>
+                  <a
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={
+                      isActive
+                        ? `${link.accent} font-bold`
+                        : 'text-ink hover:text-pink transition-colors'
+                    }
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 };

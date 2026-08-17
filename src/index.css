@@ -1,36 +1,36 @@
 @import "tailwindcss";
 
+@theme {
+  --color-purple: #663399;
+  --color-ink: #241a33;
+  --color-tint: #F0EAF7;
+  --color-cream: #F7F1E3;
+  --color-yellow: #FBBA00;
+  --color-blue: #0D8FDD;
+  --color-green: #009B62;
+  --color-pink: #E5205F;
+  --color-body: #4a3f57;
+  --color-muted: #6b5f78;
+  --color-placeholder: #9b8fa8;
+  --color-hairline: #dcd2ea;
+  --color-footer-muted: #c4b8d4;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
 @layer base {
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  }
-
-  h1, h2, h3, .font-serif {
-    font-family: 'Instrument Serif', Georgia, serif;
+    font-family: var(--font-display);
   }
 }
 
-/* Gekartelde onderrand — het "bonnetje"-motief van UserSignupCTA */
-.receipt-edge {
-  -webkit-mask-image: linear-gradient(#000, #000),
-    repeating-linear-gradient(
-      -45deg,
-      transparent 0 4px,
-      #000 4px 12px
-    );
-  -webkit-mask-size: 100% calc(100% - 10px), 16.97px 10px;
-  -webkit-mask-position: top left, bottom left;
-  -webkit-mask-repeat: no-repeat, repeat-x;
-  -webkit-mask-composite: source-over;
-  mask-image: linear-gradient(#000, #000),
-    repeating-linear-gradient(
-      -45deg,
-      transparent 0 4px,
-      #000 4px 12px
-    );
-  mask-size: 100% calc(100% - 10px), 16.97px 10px;
-  mask-position: top left, bottom left;
-  mask-repeat: no-repeat, repeat-x;
-  mask-composite: add;
+@keyframes pk-dots {
+  0%, 100% { opacity: .25; }
+  50% { opacity: 1; }
 }
 
+@keyframes pk-badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .35; }
+}

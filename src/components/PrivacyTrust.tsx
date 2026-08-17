@@ -1,76 +1,55 @@
 import React from 'react';
-import { Lock, EyeOff, FileText, CheckCircle2 } from 'lucide-react';
+
+const points = [
+  {
+    title: 'Geen prompts of antwoorden gelezen',
+    description:
+      'Promptkoffie heeft GEEN toegang tot de inhoud van je chats, vragen of de gegenereerde AI-antwoorden. Onze extensie is blind voor de tekst.',
+  },
+  {
+    title: 'Uitsluitend status-detectie',
+    description:
+      'We meten alleen of de AI momenteel aan het typen is (bijv. via de laadindicator in het scherm) om de ad-overlay veilig te activeren.',
+  },
+  {
+    title: 'Geen verkoop van je gegevens',
+    description:
+      'We verzamelen geen persoonlijke zoekprofielen. Adverteerders kopen alleen geanonimiseerde wachttijd-impressies zonder jouw identiteit.',
+  },
+];
 
 export const PrivacyTrust: React.FC = () => {
-  const points = [
-    {
-      icon: EyeOff,
-      title: 'Geen Prompts of Antwoorden Gelezen',
-      description:
-        'Promptkoffie heeft GEEN toegang tot de inhoud van je chats, vragen of de gegenereerde AI-antwoorden. Onze extensie is blind voor de tekst.',
-    },
-    {
-      icon: Lock,
-      title: 'Uitsluitend Status-Detectie',
-      description:
-        'We meten alleen of de AI momenteel aan het typen is (bijv. via de laadindicator in het scherm) om de ad-overlay veilig te activeren.',
-    },
-    {
-      icon: FileText,
-      title: 'Geen Verkoop van Je Gegevens',
-      description:
-        'We verzamelen geen persoonlijke zoekprofielen. Adverteerders kopen alleen geanonimiseerde wachttijd-impressies zonder jouw identiteit.',
-    },
-  ];
-
   return (
-    <section id="privacy" className="py-20 bg-[#FAF8F5] relative border-b border-[#E7E1D8]/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white border border-[#E7E1D8] rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left Header */}
-            <div className="lg:col-span-5 space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1C1917] font-serif leading-tight">
-                Jouw studie- en werkprompts blijven 100% privé.
-              </h2>
-              <p className="text-base text-[#57534E] leading-relaxed">
-                We snappen dat je AI gebruikt voor vertrouwelijke verslagen, code of zakelijke berichten. Daarom is Promptkoffie gebouwd met een strikte privacy-garantie.
-              </p>
-
-              <div className="pt-2 space-y-2">
-                <div className="flex items-center gap-2 text-sm text-[#1C1917] font-semibold">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>AVG / GDPR Volledig Compliant</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-[#1C1917] font-semibold">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Getoetst door Chrome Web Store veiligheidseisen</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: verticale checklist, geen kaart-in-kaart */}
-            <div className="lg:col-span-7 divide-y divide-[#E7E1D8]">
-              {points.map((p, idx) => {
-                const IconComp = p.icon;
-                return (
-                  <div key={idx} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
-                    <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
-                      <IconComp className="w-4.5 h-4.5" />
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-bold text-[#1C1917] mb-1 font-serif">
-                        {p.title}
-                      </h3>
-                      <p className="text-xs text-[#57534E] leading-relaxed">
-                        {p.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+    <section
+      id="privacy"
+      className="scroll-mt-20 bg-green text-white px-6 sm:px-[72px] py-14 sm:py-[84px] border-b-[1.5px] border-ink"
+    >
+      <div className="grid grid-cols-1 min-[1100px]:grid-cols-[1fr_1.15fr] gap-10 min-[1100px]:gap-16 items-start">
+        <div>
+          <h2 className="font-bold text-[32px] sm:text-[46px] leading-[1.03] tracking-[-0.03em] mb-5">
+            Jouw studie- en werkprompts blijven 100% privé.
+          </h2>
+          <p className="text-[17px] leading-[1.55] text-[#d3f2e4] max-w-[38ch] mb-[26px]">
+            We snappen dat je AI gebruikt voor vertrouwelijke verslagen, code of zakelijke
+            berichten. Daarom is Promptkoffie gebouwd met een strikte privacy-garantie.
+          </p>
+          <div className="flex flex-col gap-2.5 font-mono text-[13px]">
+            <span className="border-[1.5px] border-[#7fd3b1] px-3.5 py-2.5 inline-block w-fit">
+              Geen tekst verlaat je browser
+            </span>
+            <span className="border-[1.5px] border-[#7fd3b1] px-3.5 py-2.5 inline-block w-fit">
+              Broncode publiek in te zien
+            </span>
           </div>
+        </div>
+
+        <div className="flex flex-col gap-[18px]">
+          {points.map((p) => (
+            <div key={p.title} className="bg-white text-ink border-[1.5px] border-ink px-6 sm:px-[26px] py-6">
+              <h3 className="text-[19px] font-bold tracking-[-0.015em] mb-2">{p.title}</h3>
+              <p className="text-[15.5px] leading-[1.55] text-body">{p.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -10,18 +10,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-FrZpsOGeqKO1j5CBRejdm.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
     <style>
       :root {
-        --amber: #b45309;
-        --amber-roast: #78350f;
-        --ink: #1c1917;
-        --cream: #faf8f5;
-        --border: #e7e1d8;
-        --text-secondary: #57534e;
-        --text-tertiary: #78716c;
+        --purple: #663399;
+        --ink: #241a33;
+        --cream: #f7f1e3;
+        --green: #009b62;
+        --body: #4a3f57;
+        --muted: #6b5f78;
       }
       * {
         box-sizing: border-box;
@@ -35,7 +40,7 @@
         padding: 2rem 1rem;
         background: var(--cream);
         color: var(--ink);
-        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        font-family: 'Space Grotesk', system-ui, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
       .card {
@@ -43,58 +48,46 @@
         width: 100%;
         max-width: 32rem;
         background: #fff;
-        border: 1px solid var(--border);
-        border-radius: 1.5rem;
+        border: 1.5px solid var(--ink);
         padding: 2.5rem 2rem;
         text-align: center;
-        box-shadow: 0 20px 25px -5px rgba(28, 25, 23, 0.08);
+        box-shadow: 6px 6px 0 rgba(20, 10, 35, 0.35);
       }
       .logo {
         display: inline-flex;
         align-items: center;
-        gap: 0.625rem;
         margin-bottom: 1.75rem;
         text-decoration: none;
         color: inherit;
       }
-      .logo-mark {
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 0.75rem;
-        background: linear-gradient(135deg, var(--amber), var(--amber-roast));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-      }
-      .logo-text {
-        font-family: 'Instrument Serif', Georgia, serif;
-        font-size: 1.25rem;
-        font-weight: 700;
-        letter-spacing: -0.01em;
+      .logo img {
+        display: block;
+        height: 34px;
+        width: auto;
       }
       h1 {
-        font-family: 'Instrument Serif', Georgia, serif;
         font-size: 1.875rem;
         font-weight: 700;
-        line-height: 1.2;
+        line-height: 1.15;
+        letter-spacing: -0.025em;
         margin: 0 0 0.875rem;
         text-wrap: balance;
       }
       p {
-        color: var(--text-secondary);
+        color: var(--body);
         font-size: 0.9375rem;
         line-height: 1.65;
         margin: 0 0 1rem;
       }
       p.small {
-        color: var(--text-tertiary);
+        font-family: 'IBM Plex Mono', monospace;
+        color: var(--muted);
         font-size: 0.8125rem;
         margin-bottom: 0;
       }
       .rule {
         border: none;
-        border-top: 1px solid var(--border);
+        border-top: 1.5px solid var(--ink);
         margin: 1.75rem 0 1.25rem;
       }
       .back {
@@ -102,20 +95,22 @@
         align-items: center;
         gap: 0.5rem;
         margin-top: 1.5rem;
-        background: var(--amber);
+        background: var(--purple);
         color: #fff;
         text-decoration: none;
         font-weight: 700;
         font-size: 0.875rem;
         padding: 0.75rem 1.5rem;
-        border-radius: 0.75rem;
-        transition: background 0.2s ease;
+        border: 1.5px solid var(--ink);
+        box-shadow: 3px 3px 0 var(--ink);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
       }
       .back:hover {
-        background: #92400e;
+        transform: translate(1px, 1px);
+        box-shadow: 2px 2px 0 var(--ink);
       }
       .back:focus-visible {
-        outline: 2px solid var(--amber);
+        outline: 2px solid var(--purple);
         outline-offset: 2px;
       }
     </style>
@@ -123,24 +118,7 @@
   <body>
     <main class="card">
       <a class="logo" href="/">
-        <span class="logo-mark" aria-hidden="true">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M10 2v2" />
-            <path d="M14 2v2" />
-            <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
-            <path d="M6 2v2" />
-          </svg>
-        </span>
-        <span class="logo-text">Promptkoffie</span>
+        <img src="/promptkoffie-logo.png" alt="Promptkoffie" />
       </a>
 
       <h1>Je staat op de wachtlijst.</h1>
